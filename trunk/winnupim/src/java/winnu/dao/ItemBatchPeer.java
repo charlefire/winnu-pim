@@ -29,7 +29,6 @@ public class ItemBatchPeer extends winnu.dao.BaseItemBatchPeer {
 		}
 	}	
 
-
 	//retrieve item batch using id
 	public static ItemBatch retrieveItemBatch(int id){
 		Criteria criteria = new Criteria();
@@ -56,9 +55,9 @@ public class ItemBatchPeer extends winnu.dao.BaseItemBatchPeer {
 	
 	//retrieve using batch no
 	@SuppressWarnings("unchecked")
-	public static List<ItemBatch> retrieveAllBatchNo(String query){
+	public static List<ItemBatch> retrieveAllBatchNo(int itemId){
 		Criteria criteria = new Criteria();
-		criteria.add(ItemBatchPeer.BATCHNO, query);
+		criteria.add(ItemBatchPeer.ITEMID, itemId);
 		try{
 			return (List<ItemBatch>)ItemBatchPeer.doSelect(criteria);
 		}catch(Exception e){
@@ -156,6 +155,4 @@ public class ItemBatchPeer extends winnu.dao.BaseItemBatchPeer {
 		return -1;
 	}
 	
-
-
 }

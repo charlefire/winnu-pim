@@ -150,7 +150,7 @@ public class MainForm extends javax.swing.JFrame {
         layeredPane.add(editUserPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         replaceItemPanel.setBounds(30, 30, 700, 620);
         layeredPane.add(replaceItemPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        specialWithdrawalPanel.setBounds(30, 30, 529, 276);
+        specialWithdrawalPanel.setBounds(30, 30, 500, 500);
         layeredPane.add(specialWithdrawalPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         addSupplyPanel.setBounds(30, 30, 650, 480);
         layeredPane.add(addSupplyPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);

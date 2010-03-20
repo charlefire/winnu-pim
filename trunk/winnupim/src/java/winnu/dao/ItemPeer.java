@@ -31,7 +31,6 @@ public class ItemPeer extends winnu.dao.BaseItemPeer {
 			return false;
 		}
 	}
-	
 
 	//retrieve item using id
 	public static Item retrieveItem(int id){
@@ -224,6 +223,20 @@ public class ItemPeer extends winnu.dao.BaseItemPeer {
 			return count;
 			
 			
+		}
+	}
+
+	public static int retrieveItemId(String brandName){
+		Criteria criteria = new Criteria();
+		criteria.add(ItemPeer.BRANDNAME, brandName);
+		
+		try{
+			Item result = (Item)ItemPeer.doSelect(criteria).get(0);
+			return (int)result.getItemId();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return -1;
 		}
 	}
 }

@@ -1,65 +1,66 @@
 package winnu.control;
 
-import java.util.ArrayList;
-
-import winnu.dao.Item;
+import java.util.*;
+import javax.swing.DefaultListModel;
 import winnu.dao.ItemBatchPeer;
+import winnu.dao.ItemBatch;
 import winnu.dao.ItemPeer;
-import winnu.dao.StockedItem;
 import winnu.dao.StockedItemPeer;
 import winnu.dao.WithdrawnItemPeer;
 
 
 public class SpecialWithdrawalController {
-
+	private List<Integer> itemBatch = new ArrayList<Integer>();
 	private WinnuControl control;
-
+	
     public SpecialWithdrawalController(WinnuControl control){
 		this.control = control;
     }
 
-    public boolean withdrawItem(String brandName, Integer quantity, String reason){
-    	int itemId,remainingItems,nextBatch,itemBatchId,userId;
-    	Item itemToWithdraw = ItemPeer.retrieveAllBrandName(brandName).get(0);
-    	
-    	itemId = itemToWithdraw.getItemId();
-    	userId = control.getCurrentUser().getUserId();
-    	
-    	java.util.Date today = new java.util.Date();
-    	long t = today.getTime();
-    	java.sql.Date dt = new java.sql.Date(t);
-    	
-    	remainingItems = quantity;
-    	System.out.println(remainingItems);
+    public boolean withdrawItem(String brandName, int i, int quantity, String reason) {    	
+    	System.out.print(itemBatch.get(i) + " - " + ItemBatchPeer.retrieveAllBatchNo(ItemPeer.retrieveItemId(brandName)).size());
 
-		nextBatch = itemToWithdraw.getNextBatch();
-    	while(remainingItems>0){
-	        	System.out.println("next batch: " + nextBatch);
-	        	
-	        	itemBatchId = ItemBatchPeer.retrieveItemLatestBatch(itemToWithdraw.getItemId(),nextBatch).getItemBatchId();
-        		System.out.println("remaining: " + remainingItems);
-	        	
-	        	ArrayList<StockedItem> siList = (ArrayList<StockedItem>)StockedItemPeer.retrieveAllItemBatchId(itemBatchId);
-	        	StockedItem si = siList.get(0);
-	        	
-	        	System.out.println(si.getQuantity());     
-	        	
-	        	if(remainingItems>=si.getQuantity()){
-	        		StockedItemPeer.updateStockedItemQuantity(si.getStockedItemId(), 0);
-	        		WithdrawnItemPeer.addWithdrawnItem((float)si.getCurrentPrice(), dt, reason, itemBatchId, userId, si.getQuantity());
-	        		nextBatch++;
-	        		ItemPeer.updateNextBatch(itemToWithdraw.getItemId(), nextBatch);		        		
-	        		remainingItems = remainingItems - si.getQuantity();		        		
-	        	}else{
-	        		StockedItemPeer.updateStockedItemQuantity(si.getStockedItemId(), si.getQuantity()-remainingItems);
-	        		WithdrawnItemPeer.addWithdrawnItem((float)si.getCurrentPrice(), dt, reason, itemBatchId, userId, remainingItems);
-	        		remainingItems = 0;	        		
-	        	}	        	
-	        	
-        		System.out.println("remaining items: " + remainingItems);
-
-    	System.out.println(itemId);
+    	int batchId = StockedItemPeer.retrieveAllItemBatchId(i+1).get(0).getItemBatchId();
+    	int itemId = ItemPeer.retrieveItemId(brandName);
+    	
+    	if(quantity < (StockedItemPeer.retrieveUsingBatchId(batchId).get(0).getQuantity()
+    					- ItemPeer.retrieveItem(itemId).getMinimumSupplyLimit())) {
+			int removedFromStocked = StockedItemPeer.retrieveUsingBatchId(batchId).get(0).getQuantity() - quantity;
+			float currentPrice = (float)StockedItemPeer.retrieveAllItemBatchId(batchId).get(0).getCurrentPrice();
+			int userId = control.getCurrentUser().getUserId();
+			java.util.Date today = new java.util.Date();
+	    	long t = today.getTime();
+	    	java.sql.Date date = new java.sql.Date(t);
+			
+			StockedItemPeer.updateStockedItem(batchId, currentPrice, removedFromStocked, batchId);
+			WithdrawnItemPeer.addWithdrawnItem(0, date, reason, batchId, userId, quantity);
+			
+			System.out.print(itemBatch.get(i) + " - " + quantity);
+			
+			return true;
     	}
-        return true;
+    	else
+    		return false;
     }
+
+    public DefaultListModel getItemDetails(String brandName) {
+    	DefaultListModel items = new DefaultListModel();
+    	items.clear();
+    	List<ItemBatch> itemBatches = new ArrayList<ItemBatch>();
+    	itemBatches.clear();
+    	itemBatches = ItemBatchPeer.retrieveAllBatchNo(ItemPeer.retrieveItemId(brandName));
+    	int maxBatchNo = itemBatches.size();
+    	
+    	if(maxBatchNo > 0 && itemBatches.size() > 0) {
+	    	for(int i = 0; i < maxBatchNo; i++) {
+	    		itemBatch.add(i, itemBatches.get(i).getBatchNo());
+	    		items.add(i, "Batch: " + Integer.toString(itemBatches.get(i).getBatchNo()) 
+	    				+ " - Quantity: " + StockedItemPeer.retrieveAllItemBatchId(itemBatches.get(i).getItemBatchId()).get(0).getQuantity());
+	    	
+	    		System.out.print("Batch: " + i + " - " + StockedItemPeer.retrieveAllItemBatchId(itemBatches.get(i).getItemBatchId()).get(0).getQuantity());
+	    	}
+	    }
+    	return items;
+    }
+
 }
