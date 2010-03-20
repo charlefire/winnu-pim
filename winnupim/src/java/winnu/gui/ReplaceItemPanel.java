@@ -1,64 +1,51 @@
 package winnu.gui;
 import winnu.control.WinnuControl;
 import javax.swing.DefaultListModel;
-import java.util.List;
 
-import winnu.dao.Item;
-import winnu.dao.WithdrawnItem;
-
-@SuppressWarnings("serial")
 public class ReplaceItemPanel extends javax.swing.JPanel {
 	private WinnuControl control;
 	private MainForm mainform;
-	@SuppressWarnings("unused")
-	private List<Item> lstItemBatch;
-	@SuppressWarnings("unused")
-	private DefaultListModel lstModel = new DefaultListModel();
 
     public ReplaceItemPanel(MainForm mainform) {
     	this.mainform = mainform;
     	initComponents();
     }
-
+    
 	public void setControl(WinnuControl control){
         this.control = control;
     }
-
+	
     private void initComponents() {
-
-    	withdrawnItems = new java.util.ArrayList<WithdrawnItem>();
         rbtnGroup = new javax.swing.ButtonGroup();
-        labelReplaceItem = new javax.swing.JLabel();
-        labelItemName = new javax.swing.JLabel();
-        labelItemQuantity = new javax.swing.JLabel();
+        lblReplaceItem = new javax.swing.JLabel();
+        lblItemName = new javax.swing.JLabel();
+        lblItemQuantity = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
-        labelReason = new javax.swing.JLabel();
-        labelItemName1 = new javax.swing.JLabel();
+        lblReason = new javax.swing.JLabel();
+        lblItemName1 = new javax.swing.JLabel();
         lblBrandName = new javax.swing.JLabel();
         lblGenericName = new javax.swing.JLabel();
         spaneSale = new javax.swing.JScrollPane();
         lstResults = new javax.swing.JList();
         btnConfirm = new javax.swing.JButton();
         btnSearchItem = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        labelItemQuantity1 = new javax.swing.JLabel();
+        lblItemBatch = new javax.swing.JLabel();
         rbtnDamaged = new javax.swing.JRadioButton();
         rbtnExpired = new javax.swing.JRadioButton();
+        
+        lblReplaceItem.setFont(new java.awt.Font("Tahoma", 0, 18));
+        lblReplaceItem.setText("Replacement of Item");
+        
+        lblItemName.setText("Brand Name: ");
 
-
-        labelReplaceItem.setFont(new java.awt.Font("Tahoma", 0, 18));
-        labelReplaceItem.setText("Replacement of Item");
-
-        labelItemName.setText("Brand Name: ");
-
-        labelItemQuantity.setText("Quantity:");
+        lblItemQuantity.setText("Quantity:");
 
         txtQuantity.setMaximumSize(null);
         txtQuantity.setMinimumSize(null);
 
-        labelReason.setText("Reason:");
+        lblReason.setText("Reason:");
 
-        labelItemName1.setText("Generic Name:");
+        lblItemName1.setText("Generic Name:");
 
         lblBrandName.setText("<Select an Item>");
 
@@ -81,15 +68,8 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
                 btnSearchItemActionPerformed(evt);
             }
         });
-        
-        btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
 
-        labelItemQuantity1.setText("Choose a batch:");
+        lblItemBatch.setText("Choose a batch:");
 
         rbtnDamaged.setText("Damaged");
         rbtnExpired.setText("Expired");
@@ -106,83 +86,77 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(labelReplaceItem))
+                        .addComponent(lblReplaceItem))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labelItemName)
-                                    .addComponent(labelItemName1))
+                                    .addComponent(lblItemName)
+                                    .addComponent(lblItemName1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblGenericName)
                                     .addComponent(lblBrandName)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
-                                .addComponent(labelItemQuantity)
+                                .addComponent(lblItemQuantity)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rbtnDamaged)
                                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rbtnExpired)
-                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelItemQuantity1)
+                            .addComponent(lblItemBatch)
                             .addComponent(spaneSale, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(labelReason)))
+                        .addComponent(lblReason)))
                 .addContainerGap(927, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelReplaceItem)
+                .addComponent(lblReplaceItem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelItemName1)
+                    .addComponent(lblItemName1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblBrandName)
-                            .addComponent(labelItemName))
+                            .addComponent(lblItemName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblGenericName)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearchItem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelItemQuantity1)
+                .addComponent(lblItemBatch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spaneSale, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelItemQuantity)
+                    .addComponent(lblItemQuantity)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelReason)
+                    .addComponent(lblReason)
                     .addComponent(rbtnDamaged))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbtnExpired)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirm)
-                //.addGap(18,18,18)
-                .addComponent(btnCancel)
                 .addContainerGap(164, Short.MAX_VALUE))
         );
-    }// </editor-fold>
+    }
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
     	int selectedIndex = -1;
     	
-    	//public static boolean updateWithdrawnItem(int withdrawnItemId, String dateWithdrawn, String reason, int doctorId, int saleId, int itemBatchId, int userId){
-
     	if(!lstResults.getSelectedValue().equals(null)) {
     		selectedIndex = lstResults.getSelectedIndex();
     		
@@ -204,7 +178,6 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     }
     
     private void updateView(){
-    	lstItemBatch = control.itemSearchController.searchItem(control.getCurrentSelectedItem().getBrandName());
     	DefaultListModel items;
 		
     	if(!control.getCurrentSelectedItem().equals(null)){
@@ -218,25 +191,17 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     	}
     	
 	}
-    
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt){
-    	//this.setVisible(false);
-    	mainform.reloadMainMenu();
-    }
 
     // Variables declaration - do not modify
-    @SuppressWarnings("unused")
-	private java.util.List<WithdrawnItem> withdrawnItems;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnSearchItem;
-    private javax.swing.JButton btnCancel;
     private javax.swing.JScrollPane spaneSale;
-    private javax.swing.JLabel labelItemName;
-    private javax.swing.JLabel labelItemName1;
-    private javax.swing.JLabel labelItemQuantity;
-    private javax.swing.JLabel labelItemQuantity1;
-    private javax.swing.JLabel labelReason;
-    private javax.swing.JLabel labelReplaceItem;
+    private javax.swing.JLabel lblItemName;
+    private javax.swing.JLabel lblItemName1;
+    private javax.swing.JLabel lblItemQuantity;
+    private javax.swing.JLabel lblItemBatch;
+    private javax.swing.JLabel lblReason;
+    private javax.swing.JLabel lblReplaceItem;
     private javax.swing.JLabel lblBrandName;
     private javax.swing.JLabel lblGenericName;
     private javax.swing.JList lstResults;

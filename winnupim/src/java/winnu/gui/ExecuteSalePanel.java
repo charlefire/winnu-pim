@@ -276,9 +276,9 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
     }
     
     private void btnOverrideSaleActionPerformed(java.awt.event.ActionEvent evt) {
-		overrideEnableForm = new OverrideEnableForm(control, this, lstSelectedItems.getSelectedValue().toString(), lstSelectedItems.getSelectedIndex());
+		overrideSaleForm = new OverrideSaleForm(control, this, lstSelectedItems.getSelectedValue().toString(), lstSelectedItems.getSelectedIndex());
 		
-		overrideEnableForm.enableByUser();
+		overrideSaleForm.getAdminInfo();
     }
 //event for new button cancel
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,7 +335,7 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-	private winnu.gui.OverrideEnableForm overrideEnableForm;
+	private winnu.gui.OverrideSaleForm overrideSaleForm;
 	private javax.swing.JButton btnAddItemToSale;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnOverrideSale;

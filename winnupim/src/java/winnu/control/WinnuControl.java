@@ -21,6 +21,7 @@ public class WinnuControl {
     public SpecialWithdrawalController specialWithdrawalController;
     public ReplaceItemController replaceItemController;
     public ReportController reportController;
+	public OverrideSaleController overrideSaleController;
     
     public WinnuControl(){
         addAccountController = new AddAccountController();

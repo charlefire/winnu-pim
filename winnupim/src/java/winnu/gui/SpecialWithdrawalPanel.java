@@ -1,85 +1,95 @@
-
 package winnu.gui;
-import javax.swing.JOptionPane;
-import winnu.control.WinnuControl;
 
-@SuppressWarnings("serial")
+import java.util.ArrayList;
+import java.util.List;
+
+import winnu.control.WinnuControl;
+import winnu.dao.Item;
+
+import javax.swing.JOptionPane;
+
 public class SpecialWithdrawalPanel extends javax.swing.JPanel {
 	private WinnuControl control;
 	private MainForm mainform;
+	public List<Item> itemList = null;
 
-    /** Creates new form PanelSpecialWithdrawal */
     public SpecialWithdrawalPanel(MainForm mainform) {
-    	this.mainform = mainform;
-        initComponents();
+        this.mainform = mainform;
+    	initComponents();
     }
 
-	public void setControl(WinnuControl control){
+	public void setControl(WinnuControl control) {
         this.control = control;
     }
 	
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        buttonConfirm = new javax.swing.JButton();
-        textfieldItemQuantity = new javax.swing.JTextField();
-        labelItemName1 = new javax.swing.JLabel();
-        labelItemName = new javax.swing.JLabel();
-        labelSpecialWithdrawal = new javax.swing.JLabel();
-        labelReason = new javax.swing.JLabel();
-        btnSelectItem = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
+        rbtnGroup = new javax.swing.ButtonGroup();
+        lblSpecialWithdrawal = new javax.swing.JLabel();
         lblGenericName = new javax.swing.JLabel();
         lblBrandName = new javax.swing.JLabel();
-        labelItemName2 = new javax.swing.JLabel();
+        lblGenericName2 = new javax.swing.JLabel();
+        lblBrandName2 = new javax.swing.JLabel();
+        btnSelectItem = new javax.swing.JButton();
+        spaneResults = new javax.swing.JScrollPane();
+        lstResults = new javax.swing.JList();
+        lblQuantity = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
+        lblReason = new javax.swing.JLabel();
         rbtnItemDisposal = new javax.swing.JRadioButton();
         rbtnItemReturn = new javax.swing.JRadioButton();
         rbtnItemFree = new javax.swing.JRadioButton();
-        rbtnGroup = new javax.swing.ButtonGroup();
-
-        buttonConfirm.setText("Confirm");
-        buttonConfirm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonConfirmActionPerformed(evt);
-            }
-        });
-
-        btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
+        btnConfirm = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        items = new javax.swing.DefaultListModel();
         
-        labelItemName1.setText("Quantity:");
+        lblSpecialWithdrawal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSpecialWithdrawal.setText("Special Withdrawal");
 
-        labelItemName.setText("Generic Name:");
+        lblGenericName.setText("Generic Name:");
 
-        labelSpecialWithdrawal.setFont(new java.awt.Font("Tahoma", 0, 18));
-        labelSpecialWithdrawal.setText("Special Withdrawal");
-        labelReason.setText("Reason/s:");
+        lblBrandName.setText("Brand Name:");
+
+        lblGenericName2.setText("<select an item>");
+
+        lblBrandName2.setText("<select an item>");
 
         btnSelectItem.setText("Select Item");
-        btnSelectItem.addActionListener(new java.awt.event.ActionListener() {
+        btnSelectItem.addActionListener(new java.awt.event.ActionListener(){
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectItemActionPerformed(evt);
             }
         });
+        
+        lstResults.setMaximumSize(null);
+        lstResults.setMinimumSize(null);
+        spaneResults.setViewportView(lstResults);
 
-        rbtnItemDisposal.setText("Disposal of damaged or expired items");
-        rbtnItemReturn.setText("Return of items to supplier");
+        lblQuantity.setText("Quantity:");
+        
+        lblReason.setText("Reason/s:");
+
+        rbtnItemDisposal.setText("Disposal of damaged/expired");
+        rbtnItemDisposal.setSelected(true);
+        rbtnItemReturn.setText("Return to supplier");
         rbtnItemFree.setText("Giving items for free");
         rbtnGroup.add(rbtnItemDisposal);
         rbtnGroup.add(rbtnItemReturn);
         rbtnGroup.add(rbtnItemFree);
         
+        btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
         
-        lblGenericName.setText("<select an item>");
-
-        lblBrandName.setText("<select an item>");
-
-        labelItemName2.setText("Brand Name:");
-
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,131 +97,154 @@ public class SpecialWithdrawalPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(23, 23, 23)
+                        .addComponent(lblSpecialWithdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelReason)
-                            .addComponent(labelItemName1))
+                            .addComponent(lblBrandName)
+                            .addComponent(lblGenericName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        		.addGroup(layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(buttonConfirm)
-                                        .addGap(5, 5, 5)
-                                        .addComponent(btnCancel))
-                            .addComponent(rbtnItemDisposal)
-                            .addComponent(rbtnItemReturn)
-                            .addComponent(rbtnItemFree)
-                            .addComponent(textfieldItemQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelSpecialWithdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelItemName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblGenericName))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(labelItemName2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSelectItem, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblBrandName))))))
-                .addContainerGap(136, Short.MAX_VALUE))
+                            .addComponent(lblGenericName2)
+                            .addComponent(lblBrandName2)
+                            .addComponent(btnSelectItem)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnConfirm)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(spaneResults, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblQuantity)
+                    .addComponent(lblReason))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbtnItemDisposal)
+                    .addComponent(rbtnItemFree)
+                    .addComponent(rbtnItemReturn)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(141, 141, 141))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelSpecialWithdrawal)
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
+                .addComponent(lblSpecialWithdrawal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelItemName)
-                    .addComponent(lblGenericName))
+                    .addComponent(lblGenericName)
+                    .addComponent(lblGenericName2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBrandName)
-                    .addComponent(labelItemName2))
-                .addGap(5, 5, 5)
+                    .addComponent(lblBrandName2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSelectItem)
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spaneResults, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textfieldItemQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelItemName1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lblQuantity)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(rbtnItemDisposal)
-                            .addComponent(rbtnItemReturn)
-                            .addComponent(rbtnItemFree).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                		.addComponent(buttonConfirm)
-	                        .addComponent(btnCancel))
-                        .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelReason)
-                        .addContainerGap())))
+                        .addGap(23, 23, 23)
+                        .addComponent(rbtnItemReturn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbtnItemFree, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancel)
+                            .addComponent(btnConfirm)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblReason)
+                        .addComponent(rbtnItemDisposal)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-	private void buttonConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-		@SuppressWarnings("unused")
-		String genericName = lblGenericName.getText();
-		String brandName = lblBrandName.getText();
-		Integer quantity = Integer.parseInt(textfieldItemQuantity.getText());
-		String reason = rbtnItemDisposal.isSelected() ? rbtnItemDisposal.getText() : (rbtnItemReturn.isSelected() ? rbtnItemReturn.getText() : (rbtnItemFree.isSelected() ? rbtnItemFree.getText() : ""));
+	private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
+		String brandName = lblBrandName2.getText();
+		int quantity = Integer.parseInt(txtQuantity.getText());
+		int index = lstResults.getSelectedIndex();
+		String reason = rbtnItemDisposal.isSelected() ? "Disposal": (rbtnItemReturn.isSelected() ? "Return" : (rbtnItemFree.isSelected() ? "Free" : "NULL"));
 		
-		if(!(reason.equals("") || quantity.equals("") || quantity.equals("0") )) {	
-			if(control.specialWithdrawalController.withdrawItem(brandName, quantity, reason)){
-				JOptionPane.showMessageDialog(null, textfieldItemQuantity.getText() + " " + lblBrandName.getText() +  " has been successfully withdrawn.", "Special Withdrawal", 1);
-				this.setVisible(false);
+		if(quantity != 0 && !Integer.toString(quantity).equals(null) && !reason.equals("NULL")) {	
+			if(control.specialWithdrawalController.withdrawItem(brandName, index, quantity, reason)){
+				JOptionPane.showMessageDialog(null, txtQuantity.getText() + " " + lblBrandName2.getText() +  " has been successfully withdrawn.", "Special Withdrawal", JOptionPane.INFORMATION_MESSAGE);
+				
+				updateView();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Quantity exceeds minimum supply limit. Please re-check.", "ERROR: Special Withdrawal", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-	}//GEN-LAST:event_buttonSearchActionPerformed
+	}
 
-	private void btnSelectItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectItemActionPerformed
+	private void btnSelectItemActionPerformed(java.awt.event.ActionEvent evt) {
 		SearchItemFrame searchItemFrame = new SearchItemFrame(this.control);
 		searchItemFrame.setVisible(true);
 
         control.setCurrentSelectedItem(null);
-        
-        searchItemFrame.addWindowListener(new java.awt.event.WindowAdapter(){
-        	public void windowClosed(java.awt.event.WindowEvent e){
+        searchItemFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+        	public void windowClosed(java.awt.event.WindowEvent e) {
         		updateView();
         	}
-        });        
-	}//GEN-LAST:event_btnSelectItemActionPerformed
-    	
-	private void updateView(){		
+        });
+	}
+    
+	private void updateView() {
 		if(!control.getCurrentSelectedItem().equals(null)){
-			lblGenericName.setText(control.getCurrentSelectedItem().getGenericName());
-			lblBrandName.setText(control.getCurrentSelectedItem().getBrandName());
-			btnSelectItem.setText("Change Item");
+			lblGenericName2.setText(control.getCurrentSelectedItem().getGenericName());
+			lblBrandName2.setText(control.getCurrentSelectedItem().getBrandName());
+			
+			if(!(items = control.specialWithdrawalController
+						.getItemDetails(control.getCurrentSelectedItem().getBrandName()))
+					.equals(null)) {
+				lstResults.setModel(items);
+			}
 		}
 	}
 	
-	private void btnCancelActionPerformed(java.awt.event.ActionEvent evt){
-    	//this.setVisible(false);
-		mainform.reloadMainMenu();
+	private void resetFields() {
+		lblGenericName2.setText("<select an item>");
+		lblBrandName2.setText("<select an item>");
+		btnSelectItem.setText("Select Item");
+		txtQuantity.setText("");
+		rbtnItemDisposal.setSelected(true);
+		items.clear();
+		lstResults.setModel(items);
 	}
-    	
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+	
+	private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
+    	resetFields();
+		
+    	mainform.reloadMainMenu();
+	}
+
+	private javax.swing.DefaultListModel items;
     private javax.swing.JButton btnSelectItem;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton buttonConfirm;
-    private javax.swing.JLabel labelItemName;
-    private javax.swing.JLabel labelItemName1;
-    private javax.swing.JLabel labelItemName2;
-    private javax.swing.JLabel labelReason;
-    private javax.swing.JLabel labelSpecialWithdrawal;
+    private javax.swing.JButton btnConfirm;
+    private javax.swing.JLabel lblGenericName2;
+    private javax.swing.JLabel lblBrandName2;
+    private javax.swing.JLabel lblReason;
+    private javax.swing.JLabel lblSpecialWithdrawal;
     private javax.swing.JLabel lblBrandName;
     private javax.swing.JLabel lblGenericName;
-    private javax.swing.JTextField textfieldItemQuantity;
+    private javax.swing.JLabel lblQuantity;
+    private javax.swing.JScrollPane spaneResults;
+    private javax.swing.JList lstResults;
+    private javax.swing.JTextField txtQuantity;
     private javax.swing.ButtonGroup rbtnGroup;
     private javax.swing.JRadioButton rbtnItemDisposal;
     private javax.swing.JRadioButton rbtnItemReturn;
     private javax.swing.JRadioButton rbtnItemFree;
-    // End of variables declaration//GEN-END:variables
 }
