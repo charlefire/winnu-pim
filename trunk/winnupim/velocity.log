@@ -1,0 +1,34 @@
+Sat Mar 20 22:20:23 CST 2010  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Sat Mar 20 22:20:23 CST 2010   [info] ************************************************************** 
+Sat Mar 20 22:20:23 CST 2010   [info] Starting Jakarta Velocity v1.3.1
+Sat Mar 20 22:20:23 CST 2010   [info] RuntimeInstance initializing.
+Sat Mar 20 22:20:23 CST 2010   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+Sat Mar 20 22:20:23 CST 2010   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Sat Mar 20 22:20:23 CST 2010   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Sat Mar 20 22:20:23 CST 2010   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Sat Mar 20 22:20:23 CST 2010   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Sat Mar 20 22:20:23 CST 2010   [info] FileResourceLoader : initialization starting.
+Sat Mar 20 22:20:23 CST 2010   [info] FileResourceLoader : adding path 'C:\Users\Charm\workspace\Winnu\templates'
+Sat Mar 20 22:20:23 CST 2010   [info] FileResourceLoader : initialization complete.
+Sat Mar 20 22:20:23 CST 2010   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Sat Mar 20 22:20:23 CST 2010   [info] Default ResourceManager initialization complete.
+Sat Mar 20 22:20:23 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Sat Mar 20 22:20:23 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Sat Mar 20 22:20:23 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Sat Mar 20 22:20:23 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Sat Mar 20 22:20:23 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Sat Mar 20 22:20:23 CST 2010   [info] Created: 20 parsers.
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : initialization starting.
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
+Sat Mar 20 22:20:23 CST 2010  [error] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro :  VM library template macro registration complete.
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : messages on  : VM system will output logging messages
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
+Sat Mar 20 22:20:23 CST 2010   [info] Velocimacro : initialization complete.
+Sat Mar 20 22:20:23 CST 2010   [info] Velocity successfully started.
+Sat Mar 20 22:20:24 CST 2010   [info] ResourceManager : found sql/db-init/Control.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Sat Mar 20 22:20:24 CST 2010   [info] ResourceManager : found sql/db-init/mysql/createdb.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
