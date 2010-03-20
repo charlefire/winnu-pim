@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE database SYSTEM
+ "http://db.apache.org/torque/dtd/database_3_1.dtd">
+
+<database
+  name="winnudb"
+  defaultIdMethod="native"
+  package="winnu.dao">
+	<table name="User" javaName="User" description="User">
+		<column
+			name="userId"
+			javaName="userId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			size="5"
+			autoIncrement="true"
+			description="User Id"/>
+		<column
+			name="username"
+			javaName="username"
+			required="true"
+			type="VARCHAR"
+			size="20"
+			description="Name"/>
+		<column
+			name="password"
+			javaName="password"
+			required="true"
+			primaryKey="false"
+			type="VARCHAR"
+			size="20"
+			description="Password"/>
+		<column
+			name="firstName"
+			javaName="firstName"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="First name"/>
+		<column
+			name="middleName"
+			javaName="middleName"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Middle name"/>
+		<column
+			name="lastName"
+			javaName="lastName"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Last name"/>
+		<column
+			name="position"
+			javaName="position"
+			required="true"
+			type="VARCHAR"
+			size="20"
+			description="Position"/>
+		<column
+			name="address"
+			javaName="address"
+			required="false"
+			type="VARCHAR"
+			size="100"
+			description="address"/>
+		<column
+			name="contactNo"
+			javaName="contactNo"
+			required="false"
+			type="VARCHAR"
+			size="50"
+			description="Contact No"/>
+		<column
+			name="type"
+			javaName="type"
+			required="true"
+			type="VARCHAR"
+			size="20"
+			description="Type"/>	
+		<column
+			name="deleted"
+			javaName="deleted"
+			required="true"
+			type="BOOLEANINT"
+			size="5"
+			description="Deleted"
+			/>
+		<unique>
+			<unique-column name="username" />
+		</unique>
+	</table>
+
+	
+	<table name="Sale" javaName="Sale" description="Sale">
+		<column
+			name="saleId"
+			javaName="saleId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			size="5"
+			autoIncrement="true"
+			description="Sale Id"/>
+		<column
+			name="customerName"
+			javaName="customerName"
+			required="false"
+			type="VARCHAR"
+			size="30"
+			description="Customer Name"/>
+		<column
+			name="saleDate"
+			javaName="saleDate"
+			required="true"
+			type="VARCHAR"
+			size="20"
+			description="Sale Date"/>
+		<column
+			name="totalCost"
+			javaName="totalCost"
+			type="FLOAT"
+			required="true"
+			size="20"
+			description="Total Cost"/>
+		<column
+			name="userId"
+			javaName="userId"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="User Id"/>
+		<foreign-key foreignTable="User">
+			<reference local="userId" foreign="userId"/>
+		</foreign-key>
+	</table>
+	
+	<table name="Supplier" javaName="Supplier" description="Supplier">
+		<column
+			name="supplierId"
+			javaName="supplierId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			size="5"
+			autoIncrement="true"
+			description="Supplier Id"/>
+		<column
+			name="supplierName"
+			javaName="supplierName"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Supplier Name"/>
+		<column
+			name="address"
+			javaName="address"
+			required="false"
+			type="VARCHAR"
+			size="100"
+			description="Supplier address"/>
+		<column
+			name="contactNo"
+			javaName="contactNo"
+			required="false"
+			type="VARCHAR"
+			size="20"
+			description="Supplier Contact No"/>
+		<unique>
+			<unique-column name="supplierName" />
+		</unique>
+	</table>
+	
+	<table name="Item" javaName="Item" description="Item">
+		<column
+			name="itemId"
+			javaName="itemId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			autoIncrement="true"
+			size="5"
+			description="Item Id"/>
+		<column
+			name="genericName"
+			javaName="genericName"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Generic Name"/>
+		<column
+			name="brandName"
+			javaName="brandName"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Brand Name"/>
+		<column
+			name="classification"
+			javaName="classification"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Classification"/>
+		<column
+			name="type"
+			javaName="type"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Type"/>
+		<column
+			name="minimumSuppyLimit"
+			javaName="minimumSupplyLimit"
+			required="true"
+			type="INTEGER"
+			size="30"
+			description="Minimum Supply Limit"/>
+		<column
+			name="userId"
+			javaName="userId"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="User Id"/>	
+		<column
+			name="nextBatch"
+			javaName="nextBatch"
+			required="true"
+			type="INTEGER"
+			size="20"
+			description="minumum non-empty batch"/>
+			
+		<foreign-key foreignTable="User">
+			<reference local="userId" foreign="userId"/>
+		</foreign-key>
+		<unique>
+			<unique-column name="brandName" />
+		</unique>
+	</table>
+
+	
+	<table name="ItemBatch" javaName="ItemBatch" description="Item Batch">
+		<column
+			name="itemBatchId"
+			javaName="itemBatchId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			size="5"
+			autoIncrement="true"
+			description="Item Batch Id"/>
+		<column
+			name="batchNo"
+			javaName="batchNo"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="Batch No"/>
+		<column
+			name="expirationDate"
+			javaName="expirationDate"
+			required="true"
+			type="VARCHAR"
+			size="50"
+			description="Expiration Date"/>
+		<column
+			name="supplierId"
+			javaName="supplierId"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="Supplier Id"/>
+		<column
+			name="itemId"
+			javaName="itemId"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="Item Id"/>
+		<column
+			name="acquisitionCost"
+			javaName="acquisitionCost"
+			required="true"
+			type="FLOAT"
+			size="20"
+			description="Acquisition cost"/>			
+		<foreign-key foreignTable="Supplier">
+			<reference local="supplierId" foreign="supplierId"/>
+		</foreign-key>
+		<foreign-key foreignTable="Item">
+			<reference local="itemId" foreign="itemId"/>
+		</foreign-key>
+	</table>
+	
+	<table name="StockedItem" javaName="StockedItem" description="Stocked Item">
+		<column
+			name="stockedItemId"
+			javaName="stockedItemId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			size="5"
+			autoIncrement="true"
+			description="Stocked Item Id"/>
+		<column
+			name="currentPrice"
+			javaName="currentPrice"
+			required="true"
+			type="FLOAT"
+			size="20"
+			description="Current Price"/>
+		<column
+			name="quantity"
+			javaName="quantity"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="Quantity"/>
+		<column
+			name="itemBatchId"
+			javaName="itemBatchId"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="Item Batch Id"/>
+		<foreign-key foreignTable="ItemBatch">
+			<reference local="itemBatchId" foreign="itemBatchId"/>
+		</foreign-key>
+	</table>
+	
+<table name="Doctor" javaName="Doctor" description="Doctor">
+		<column
+			name="doctorId"
+			javaName="doctorId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			size="5"
+			autoIncrement="true"
+			description="Doctor Id"/>
+		<column
+			name="doctorName"
+			javaName="doctorName"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Doctor Name"/>
+		<column
+			name="licenseNo"
+			javaName="licenseNo"
+			required="true"
+			type="INTEGER"
+			size="20"
+			description="License address"/>
+		<column
+			name="s2No"
+			javaName="s2No"
+			required="true"
+			type="INTEGER"
+			size="20"
+			description="S2 No"/>
+		<unique>
+			<unique-column name="licenseNo" />
+		</unique>
+		<unique>
+			<unique-column name="s2No" />
+		</unique>
+	</table>
+	
+	<table name="WithdrawnItem" javaName="WithdrawnItem" description="Withdrawn Item">
+		<column
+			name="withdrawnItemId"
+			javaName="withdrawnItemId"
+			required="true"
+			primaryKey="true"
+			type="INTEGER"
+			autoIncrement="true"
+			size="5"
+			description="Withdrawn Item Id"/>
+		<column
+			name="sellingPrice"
+			javaName="sellingPrice"
+			required="true"
+			type="FLOAT"
+			size="20"
+			description="Selling Price"/>
+		<column
+			name="dateWithdrawn"
+			javaName="dateWithdrawn"
+			required="true"
+			type="VARCHAR"
+			size="30"
+			description="Date Withdrawn"/>
+		<column
+			name="reason"
+			javaName="reason"
+			required="true"
+			type="VARCHAR"
+			size="200"
+			description="reason"/>
+		<column
+			name="quantity"
+			javaName="quantity"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="Quantity"/>
+		<column
+			name="doctorId"
+			javaName="doctorId"
+			type="INTEGER"
+			size="5"
+			description="Doctor Id"/>
+		<column
+			name="saleId"
+			javaName="saleId"
+			type="INTEGER"
+			size="5"
+			description="Sale Id"/>
+		<column
+			name="itemBatchId"
+			javaName="itemBatchId"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="Item Batch Id"/>
+		<column
+			name="userId"
+			javaName="userId"
+			required="true"
+			type="INTEGER"
+			size="5"
+			description="User Id"/>
+		<foreign-key foreignTable="Doctor">
+			<reference local="doctorId" foreign="doctorId"/>
+		</foreign-key>
+		<foreign-key foreignTable="Sale">
+			<reference local="saleId" foreign="saleId"/>
+		</foreign-key>
+		<foreign-key foreignTable="ItemBatch">
+			<reference local="itemBatchId" foreign="itemBatchId"/>
+		</foreign-key>
+		<foreign-key foreignTable="User">
+			<reference local="userId" foreign="userId"/>
+		</foreign-key>
+	</table>
+	
+
+	
+</database>
