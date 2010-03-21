@@ -267,6 +267,13 @@
 			size="50"
 			description="Expiration Date"/>
 		<column
+			name="purchasedDate"
+			javaName="purchasedDate"
+			required="true"
+			type="VARCHAR"
+			size="50"
+			description="Purchased Date"/>
+		<column
 			name="supplierId"
 			javaName="supplierId"
 			required="true"
