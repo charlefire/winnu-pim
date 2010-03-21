@@ -208,8 +208,6 @@ public class AddSupplyPanel extends javax.swing.JPanel {
       
         
         JOptionPane.showMessageDialog(null, brandName.getText() +  " has been successfully added.", "Add Stock", 1);
-        
-        mainform.reloadMainMenu();
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     

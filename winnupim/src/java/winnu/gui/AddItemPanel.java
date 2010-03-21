@@ -483,7 +483,7 @@ public class AddItemPanel extends javax.swing.JPanel {
         txtOtherType.setEnabled(false);
         txtOtherType.setText("");
         
-        mainform.reloadMainMenu();
+        this.setVisible(false);
         
         
     }//GEN-LAST:event_btnSubmitActionPerformed

@@ -296,7 +296,10 @@ public class AddNewUserPanel extends javax.swing.JPanel {
         String usertype="";
         String password="";
 
-if((txtConfirmPassword.getText().equals("")) || (txtPassword.getText().equals("")) || (txtUsername.getText().equals("")) || (txtFirstName.getText().equals("")) || (txtMiddleName.getText().equals("")) || (txtLastName.getText().equals("")) || (txtPosition.getText().equals(""))){
+        if (!txtPassword.getText().equals(txtConfirmPassword.getText())){
+            txtPassword.setText("");
+            txtConfirmPassword.setText("");
+        }else if((txtUsername.getText().equals("")) || (txtFirstName.getText().equals("")) || (txtMiddleName.getText().equals("")) || (txtLastName.getText().equals("")) || (txtPosition.getText().equals(""))){
         	
         	JOptionPane.showMessageDialog(null, "Fields with ** should not be empty!", "Add New User", JOptionPane.ERROR_MESSAGE);
         	
@@ -310,14 +313,8 @@ if((txtConfirmPassword.getText().equals("")) || (txtPassword.getText().equals(""
             username = txtUsername.getText();
             usertype = cbxUserType.getSelectedItem().toString();
             contactnumber = txtContactNumber.getText();
-            
-            if (!txtPassword.getText().equals(txtConfirmPassword.getText())){
-				txtPassword.setText("");
-				txtConfirmPassword.setText("");
-				JOptionPane.showMessageDialog(null, "Passwords do not match!", "Add New User", JOptionPane.ERROR_MESSAGE);
 
-				
-			}else if(control.addAccountController.isExisting(txtUsername.getText())){
+			 if(control.addAccountController.isExisting(txtUsername.getText())){
             	control.addAccountController.addUser(lastname, middlename, firstname, address, position, username, usertype, contactnumber, password);
 	        	JOptionPane.showMessageDialog(null, txtUsername.getText() +  " has been successfully added.", "Add New User", 1);
             	
@@ -332,7 +329,7 @@ if((txtConfirmPassword.getText().equals("")) || (txtPassword.getText().equals(""
 	        	txtContactNumber.setText("");
 	        	cbxUserType.setSelectedIndex(0);
 	        	
-	        	mainform.reloadMainMenu();
+	        	this.setVisible(false);
             }else{
             	
             	JOptionPane.showMessageDialog(null, "The username " + txtUsername.getText() +  " already exists.", "Add New User", 1);
@@ -341,7 +338,7 @@ if((txtConfirmPassword.getText().equals("")) || (txtPassword.getText().equals(""
             	
             }
 			
-        }     
+        }   
         
     }//GEN-LAST:event_btnDoneActionPerformed
     
