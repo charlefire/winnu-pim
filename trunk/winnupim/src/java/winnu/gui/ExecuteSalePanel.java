@@ -275,11 +275,12 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
         this.setVisible(false);
     }
     
-    private void btnOverrideSaleActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnOverrideSaleActionPerformed(java.awt.event.ActionEvent evt) {    	
 		overrideSaleForm = new OverrideSaleForm(control, this, lstSelectedItems.getSelectedValue().toString(), lstSelectedItems.getSelectedIndex());
 		
 		overrideSaleForm.getAdminInfo();
     }
+    
 //event for new button cancel
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
     	txtDoctorName.setText("");
