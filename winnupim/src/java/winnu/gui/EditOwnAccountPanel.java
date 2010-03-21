@@ -18,34 +18,20 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
 	public void setControl(WinnuControl control){
         this.control = control;
     }
-	
-	public void setView(){
-		User currentUser = control.getCurrentUser();
-		jLabel2.setText(currentUser.getUsername());
-	    txtAddress.setText(currentUser.getAddress());
-	    txtPassword.setText(currentUser.getPassword());
-	    txtFname.setText(currentUser.getLastName());
-	    txtMname.setText(currentUser.getMiddleName());
-	    txtLname.setText(currentUser.getFirstName());
-	    txtConfirmPassword.setText(currentUser.getPassword());
-	    txtContactNumber.setText(currentUser.getContactNo());
-	    txtPosition.setText(currentUser.getPosition());		
-	}
 
     private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
+        lblUsername1 = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        lblConfirmPword = new javax.swing.JLabel();
+        lblEditOwnAcct = new javax.swing.JLabel();
+        lblFullName = new javax.swing.JLabel();
+        lblFName = new javax.swing.JLabel();
+        lblMName = new javax.swing.JLabel();
+        lblLName = new javax.swing.JLabel();
+        lblPosition = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
+        lblContactNo = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         txtConfirmPassword = new javax.swing.JPasswordField();
         txtPosition = new javax.swing.JTextField();
@@ -57,30 +43,30 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
         txtMname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
 
-        jLabel1.setText("Username:");
+        lblUsername.setText("Username:");
 
-        jLabel2.setText("jLabel2");
+        lblUsername1.setText("<username>");
 
-        jLabel3.setText("Password:");
+        lblPassword.setText("Password:");
 
-        jLabel4.setText("Confirm Password:");
+        lblConfirmPword.setText("Confirm Password:");
 
-        jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18));
-        jLabel5.setText("Edit Own Account");
+        lblEditOwnAcct.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18));
+        lblEditOwnAcct.setText("Edit Own Account");
 
-        jLabel6.setText("Fullname:");
+        lblFullName.setText("Full Name:");
 
-        jLabel7.setText("First");
+        lblFName.setText("First");
 
-        jLabel8.setText("Middle");
+        lblMName.setText("Middle");
 
-        jLabel9.setText("Last");
+        lblLName.setText("Last");
 
-        jLabel10.setText("Position:");
+        lblPosition.setText("Position:");
 
-        jLabel11.setText("Address:");
+        lblAddress.setText("Address:");
 
-        jLabel12.setText("Contact Number:");
+        lblContactNo.setText("Contact Number:");
 
         btnAccept.setText("Accept");
         btnAccept.addActionListener(new java.awt.event.ActionListener() {
@@ -107,22 +93,22 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel11)
+                                    .addComponent(lblContactNo)
+                                    .addComponent(lblAddress)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel6))
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(jLabel10))
+                                            .addComponent(lblPassword)
+                                            .addComponent(lblConfirmPword)
+                                            .addComponent(lblFullName))
+                                        .addComponent(lblUsername, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(lblPosition))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(txtFname, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtFname, javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(txtConfirmPassword, javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
@@ -132,20 +118,20 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
                                                 .addComponent(txtMname, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(lblUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(31, 31, 31)
                                         .addComponent(btnAccept)
                                         .addGap(5, 5, 5)
                                         .addComponent(btnCancel))))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblEditOwnAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(153, 153, 153)
-                        .addComponent(jLabel7)
+                        .addComponent(lblFName)
                         .addGap(97, 97, 97)
-                        .addComponent(jLabel8)
+                        .addComponent(lblMName)
                         .addGap(88, 88, 88)
-                        .addComponent(jLabel9)))
+                        .addComponent(lblLName)))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,77 +140,67 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel5)
+                        .addComponent(lblEditOwnAcct)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(lblUsername1)
+                            .addComponent(lblUsername))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(lblPassword))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
+                            .addComponent(lblConfirmPword)
                             .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
+                            .addComponent(lblFullName)
                             .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFName, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
+                            .addComponent(lblPosition)
                             .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
+                        	.addComponent(txtContactNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblContactNo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtContactNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                    		.addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAddress))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 	                		.addComponent(btnAccept)
 	                        .addComponent(btnCancel)))
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(lblMName)
+                    .addComponent(lblLName))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     @SuppressWarnings("deprecation")
 	private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        String firstname;
-        String middlename;
-        String lastname;
-        String position;
-        String address;
-        String contactNumber;
+        String firstname = txtFname.getText();
+        String middlename = txtMname.getText();
+        String lastname = txtLname.getText();
+        String position = txtPosition.getText();
+        String address = txtAddress.getText();
+        String contactNumber = txtContactNumber.getText();
         User currentUser = control.getCurrentUser();
 
-        firstname = txtFname.getText();
-        middlename = txtMname.getText();
-        lastname = txtLname.getText();
-        position = txtPosition.getText();
-        address = txtAddress.getText();
-        contactNumber = txtContactNumber.getText();
-
-        if(txtPassword.getText().equals(txtConfirmPassword.getText())){
-            //System.out.println(firstname);
-            //System.out.println(middlename);
-            //System.out.println(lastname);
-            //System.out.println(position);
-            //System.out.println(address);
-            //System.out.println(contactNumber);
-            control.editAccountController.editAccount(currentUser.getUserId(), currentUser.getUsername(), txtPassword.getText(), lastname, middlename, firstname, position, address, contactNumber, currentUser.getType());
+        if(txtPassword.getText().equals(txtConfirmPassword.getText())) {
+            control.editAccountController.editAccount(currentUser.getUserId(), 
+            		currentUser.getUsername(), txtPassword.getText(), 
+            		lastname, middlename, firstname, 
+            		position, address, contactNumber, currentUser.getType());
             
             control.setCurrentUser(UserPeer.retrieveUser(currentUser.getUserId()));
             JOptionPane.showMessageDialog(null, currentUser.getUsername() +  "'s information has been successfully updated.", "Edit Own Account", 1);
@@ -246,26 +222,37 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnAcceptActionPerformed
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt){
-    	//this.setVisible(false);
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
     	mainform.reloadMainMenu();
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+	public void setView(){
+		User currentUser = control.getCurrentUser();
+		lblUsername1.setText(currentUser.getUsername());
+	    txtAddress.setText(currentUser.getAddress());
+	    txtPassword.setText("");
+	    txtFname.setText(currentUser.getFirstName());
+	    txtMname.setText(currentUser.getMiddleName());
+	    txtLname.setText(currentUser.getLastName());
+	    txtConfirmPassword.setText("");
+	    txtContactNumber.setText(currentUser.getContactNo());
+	    txtPosition.setText(currentUser.getPosition());		
+	}
+	
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblPosition;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblContactNo;
+    private javax.swing.JLabel lblUsername1;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblConfirmPword;
+    private javax.swing.JLabel lblEditOwnAcct;
+    private javax.swing.JLabel lblFullName;
+    private javax.swing.JLabel lblFName;
+    private javax.swing.JLabel lblMName;
+    private javax.swing.JLabel lblLName;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JPasswordField txtConfirmPassword;
     private javax.swing.JTextField txtContactNumber;
@@ -274,6 +261,4 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtMname;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPosition;
-    // End of variables declaration//GEN-END:variables
-
 }

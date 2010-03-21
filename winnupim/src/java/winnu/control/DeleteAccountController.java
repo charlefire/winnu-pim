@@ -6,7 +6,8 @@ import winnu.dao.User;
 import winnu.dao.UserPeer;
 
 public class DeleteAccountController {
-    public DeleteAccountController(){
+    public DeleteAccountController() {
+    	
     }
 
     public boolean deleteAccount(String username){
@@ -15,7 +16,7 @@ public class DeleteAccountController {
     }
     
     
-	public static List<User> retrieveUsers(){		
-		return (List<User>)UserPeer.retrieveAllUsers();
+	public static List<User> retrieveUsers() {
+		return (List<User>) UserPeer.retrieveAllUsers();
 	}	
 }
