@@ -84,6 +84,7 @@ CREATE TABLE ItemBatch
 		            itemBatchId INTEGER (5) NOT NULL AUTO_INCREMENT,
 		            batchNo INTEGER (5) NOT NULL,
 		            expirationDate VARCHAR (50) NOT NULL,
+		            purchasedDate VARCHAR (50) NOT NULL,
 		            supplierId INTEGER (5) NOT NULL,
 		            itemId INTEGER (5) NOT NULL,
 		            acquisitionCost FLOAT (20) NOT NULL,

@@ -247,7 +247,60 @@ public class ReportController {
 	}
 	
 	
+	public static Object[][] retrieveDrugsPurchased(){
+		List<StockedItem> list = StockedItemPeer.retrieveAll();
+        StockedItem item;
+        ItemBatch itemBatch;
+        Item itemName;
+
+        Object[][] modelObject = new Object[list.size()][];         
+        
+        for(int i=0; i< list.size(); i++){
+        	item = list.get(i);
+        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
+        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
+        	
+        	Object[] model = null;
+			try {
+				model = new Object[]{item.getItemBatch().getPurchasedDate(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getCurrentPrice()};			
+			} catch (TorqueException e) {
+				// TODO Auto-generated catch block
+				System.out.println("hay");
+				e.printStackTrace();
+			}
+			modelObject[i]= model;
+        }           
+        
+        return modelObject;        
+	}
 	
+	public static Object[][] retrieveDrugsExpiring(){
+		List<StockedItem> list = StockedItemPeer.retrieveAll();
+        StockedItem item;
+        ItemBatch itemBatch;
+        Item itemName;
+
+        Object[][] modelObject = new Object[list.size()][];         
+        //if(item.getItemBatch().getExpirationDate().toString())
+        
+        for(int i=0; i< list.size(); i++){
+        	item = list.get(i);
+        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
+        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
+        	
+        	Object[] model = null;
+			try {
+				model = new Object[]{item.getItemBatch().getPurchasedDate(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getCurrentPrice()};			
+			} catch (TorqueException e) {
+				// TODO Auto-generated catch block
+				System.out.println("hay");
+				e.printStackTrace();
+			}
+			modelObject[i]= model;
+        }           
+        
+        return modelObject;        
+	}
 	
 
 }
