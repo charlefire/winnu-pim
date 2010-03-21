@@ -766,6 +766,37 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         ));
         //===================//
         
+
+        Object[][] modelObject6 = ReportController.retrieveSales();   
+        STable.setModel(new javax.swing.table.DefaultTableModel(
+                modelObject6,
+                new String [] {
+                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
+                }
+            ));
+        
+        Object[][] modelObject7 = ReportController.retrieveSalesPerPatient(); 
+        SPTable.setModel(new javax.swing.table.DefaultTableModel(
+                modelObject7,
+                new String [] {
+                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Price", "Amount", "Remarks"
+                }
+            ));
+        
+        SRDDTable.setModel(new javax.swing.table.DefaultTableModel(
+               modelObject6,
+                new String [] {
+                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
+                }
+            ));
+        
+        Object[][] modelObject8 = ReportController.retrieveSRDP(); 
+        SRDPTable.setModel(new javax.swing.table.DefaultTableModel(
+                modelObject8,
+                new String [] {
+                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Physician", "Quantity", "Unit", "Price", "Amount", "Remarks"
+                }
+            ));
         
     }
     
