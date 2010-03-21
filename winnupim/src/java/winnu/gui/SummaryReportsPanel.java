@@ -682,7 +682,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 .addComponent(btnCancel)
                 .addContainerGap(183, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
 
     private void AIbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AIbuttonActionPerformed
         // TODO add your handling code here:
