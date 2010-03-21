@@ -38,10 +38,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         DETable = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        EDDDTable = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        DDPTable = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         DPTable = new javax.swing.JTable();
@@ -53,7 +51,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         EDDDdTable = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
-        DIRTable = new javax.swing.JTable();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         IRTable = new javax.swing.JTable();
@@ -211,75 +208,13 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Drugs Expiring in 3 Months ", jPanel4);
-
-        EDDDTable.setModel(new javax.swing.table.DefaultTableModel(
+     
+         DPTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
-            }
-        ));
-        jScrollPane6.setViewportView(EDDDTable);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2660, Short.MAX_VALUE)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1930, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane1.addTab("Expired/Damaged Drugs for Disposal ", jPanel5);
-
-        DDPTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Date", "SI / Ref No.", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
-            }
-        ));
-        jScrollPane7.setViewportView(DDPTable);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2660, Short.MAX_VALUE)
-            .addGap(0, 2660, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1930, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
-            .addGap(0, 437, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane1.addTab("Drugs Dispensed to Patients ", jPanel6);
-
-        DPTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Date", "DR / Ref No.", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
+                "Date", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
             }
         ));
         jScrollPane8.setViewportView(DPTable);
@@ -364,33 +299,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Expired/Damaged Drugs Disposed ", jPanel9);
 
-        DIRTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Date", "OR / DR / Ref No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Physician", "Quantity (IN)", "Unit (IN)", "Unit Cost (IN)", "Value (IN)", "Quantity (OUT)", "Unit (OUT)", "Unit Cost (OUT)", "Value (OUT)", "Quantity (BAL)", "Unit (BAL)", "Unit Cost (BAL)", "Value (BAL)"
-            }
-        ));
-        jScrollPane11.setViewportView(DIRTable);
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1344, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane1.addTab("Detailed Inventory Report ", jPanel10);
+       
 
         IRTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -797,6 +706,16 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 }
             ));
         
+        Object[][] modelObject9 = ReportController.retrieveDrugsPurchased(); 
+        DPTable.setModel(new javax.swing.table.DefaultTableModel(
+                modelObject9,
+                new String [] {
+                    "Date", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
+                }
+            ));
+            jScrollPane8.setViewportView(DPTable);
+
+        
     }
     
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt){
@@ -812,12 +731,9 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     private javax.swing.JButton AIbutton;
     private javax.swing.JLabel AIgenName;
     private javax.swing.JTextField AItextfield;
-    private javax.swing.JTable DDPTable;
     private javax.swing.JTable DETable;
-    private javax.swing.JTable DIRTable;
     private javax.swing.JTable DPTable;
     private javax.swing.JTable DSTable;
-    private javax.swing.JTable EDDDTable;
     private javax.swing.JTable EDDDdTable;
     private javax.swing.JTable IRTable;
     private javax.swing.JTable SPTable;

@@ -23,6 +23,16 @@ public class StockedItemPeer extends winnu.dao.BaseStockedItemPeer {
 		}
 	}
 	
+	public static List<StockedItem> retrieveAll(){
+		Criteria criteria = new Criteria();
+		try{
+			return StockedItemPeer.doSelect(criteria);
+		}catch(Exception e){
+			e.printStackTrace();
+			return new ArrayList<StockedItem>();
+		}
+	}
+	
 	//retrieve stocked item using id
 	public static StockedItem retrieveStockedItem(int batchId){
 		Criteria criteria = new Criteria();
