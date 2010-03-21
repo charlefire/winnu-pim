@@ -282,19 +282,20 @@ public class ReportController {
 
         java.util.Date today = new java.util.Date();
     	long t = today.getTime();
-    	String dt = new java.sql.Date(t).toString().substring(5, 7);
-        
+    	String dt = new java.sql.Date(t).toString();
+    	
         for(int i=0; i< list.size(); i++){
         	stockedItem = list.get(i);
-        	
         	try {
-				if((Integer.parseInt(dt) - 3) == Integer.parseInt(stockedItem.getItemBatch().getExpirationDate().toString().substring(5, 7))){
-					count++;
+				try {
+					if(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()) <= 3){
+						count++;
+					}
+				} catch (TorqueException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TorqueException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -302,21 +303,17 @@ public class ReportController {
         
         Object[][] modelObject = new Object[count][];         
         
-        count=0;
-        for(int i=0; i< list.size(); i++){
+        for(int i=0; i< count; i++){
         	stockedItem = list.get(i);
         	        	
         	try {
-				if((Integer.parseInt(dt) - 3) == Integer.parseInt(stockedItem.getItemBatch().getExpirationDate().toString().substring(5, 7))){
-					Object[] model = null;
+        		if(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()) <= 3){
 						try {
-							model = new Object[]{stockedItem.getItemBatch().getItemBatchId(),stockedItem.getItemBatch().getItem().getBrandName(), stockedItem.getItemBatch().getItem().getGenericName(), stockedItem.getItemBatch().getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(stockedItem.getItemBatch().getItem().getBrandName()), "pcs", stockedItem.getItemBatch().getAcquisitionCost(), stockedItem.getCurrentPrice()};
+							Object model[] = new Object[]{stockedItem.getItemBatch().getItemBatchId(),stockedItem.getItemBatch().getItem().getBrandName(), stockedItem.getItemBatch().getItem().getGenericName(), stockedItem.getItemBatch().getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(stockedItem.getItemBatch().getItem().getBrandName()), "pcs", stockedItem.getItemBatch().getAcquisitionCost(), stockedItem.getCurrentPrice()};
+							modelObject[i]= model;
 						} catch (TorqueException e) {
 							e.printStackTrace();
 						}
-					
-					modelObject[i]= model;
-					count++;
 				}
 				
 				else{
@@ -335,9 +332,52 @@ public class ReportController {
         return modelObject;        
 	}
 	
-	private int getDateDifference(String date1, String date2){
+	@SuppressWarnings("unused")
+	private static int getDateDifference(String date1, String date2){
+		//date 1 is sysdate
+		//date 2 is expiration date
 		
-		return 3;
+		String d1month = date1.toString().substring(5, 7);
+		String d2month = date2.toString().substring(5, 7);
+		String d1year = date1.toString().substring(0, 4);
+		String d2year = date2.toString().substring(0, 4);
+		String d1day = date1.toString().substring(8, 10);
+		String d2day = date2.toString().substring(8, 10); 		
+		
+		if(Integer.parseInt(d1year) < Integer.parseInt(d2year)){
+			//sysdate is less than expiration
+			if((Integer.parseInt(d2month) == 1)){
+				return(13 - Integer.parseInt(d1month));
+			}
+			else if(Integer.parseInt(d2month) == 2){
+				return((13 - Integer.parseInt(d1month))+ 1);
+			}
+			else if(Integer.parseInt(d2month) == 3){
+				return((13 - Integer.parseInt(d1month))+ 2);
+			}
+			else{
+				return 4;
+			}
+			
+			
+		}else if(Integer.parseInt(d1year) == Integer.parseInt(d2year)){
+			//else equal
+			if(Integer.parseInt(d2month) >= Integer.parseInt(d1month)){
+				return (Integer.parseInt(d2month)-Integer.parseInt(d1month));
+			}else{
+				return 4;
+			}
+		}
+		else{
+			//greater than
+			//ignore
+			return 4;
+		}
+		
+		
+		
+		
+		
 	}
 	
 

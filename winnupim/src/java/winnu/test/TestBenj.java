@@ -44,7 +44,7 @@ public class TestBenj {
 		
 		java.util.Date today = new java.util.Date();
     	long t = today.getTime();
-    	String dt = new java.sql.Date(t).toString().substring(5, 7);
+    	String dt = new java.sql.Date(t).toString().substring(8, 10);
     	
     	
     	System.out.println(dt);
