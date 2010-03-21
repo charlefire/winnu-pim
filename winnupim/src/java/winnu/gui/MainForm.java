@@ -84,7 +84,7 @@ public class MainForm extends javax.swing.JFrame {
         layeredPane = new javax.swing.JLayeredPane();
         addNewUserPanel = new winnu.gui.AddNewUserPanel(this);
         addItemPanel = new winnu.gui.AddItemPanel(this);
-        executeSalePanel = new winnu.gui.ExecuteSalePanel();
+        executeSalePanel = new winnu.gui.ExecuteSalePanel(this);
         deleteUserPanel = new winnu.gui.DeleteUserPanel(this);
         editUserPanel = new winnu.gui.EditUserPanel(this);
         replaceItemPanel = new winnu.gui.ReplaceItemPanel(this);

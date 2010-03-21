@@ -238,7 +238,7 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
             txtPassword.setText("");
             txtConfirmPassword.setText("");
             
-            this.setVisible(false);
+            mainform.reloadMainMenu();
             
         } else {
             System.out.println("Passwords do not match.");

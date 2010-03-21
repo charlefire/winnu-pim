@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.torque.TorqueException;
 
+import winnu.dao.Doctor;
 import winnu.dao.Item;
 import winnu.dao.ItemBatch;
 import winnu.dao.ItemBatchPeer;
@@ -224,6 +225,7 @@ public class ReportController {
         WithdrawnItem item;
         ItemBatch itemBatch;
         Item itemName;
+        Doctor doctor;
 
         Object[][] modelObject = new Object[list.size()][];         
         
