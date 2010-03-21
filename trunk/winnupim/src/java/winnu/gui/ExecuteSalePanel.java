@@ -12,13 +12,11 @@ import winnu.dao.ItemPeer;
 @SuppressWarnings("serial")
 public class ExecuteSalePanel extends javax.swing.JPanel {
 	private WinnuControl control;
-	private MainForm mainform;
 	private List<Item> itemSearchResult;
 	ArrayList<String> items = new ArrayList<String>();
 	String item;
 	
-    public ExecuteSalePanel(MainForm mainform) {
-    	this.mainform = mainform;
+    public ExecuteSalePanel() {
         initComponents();
     }
 
@@ -294,7 +292,7 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
         btnOverrideSale.setEnabled(false);
         btnSubmit.setEnabled(false);
         
-        mainform.reloadMainMenu();
+        this.setVisible(false);
     }
     
 	public void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {
