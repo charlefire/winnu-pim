@@ -29,7 +29,7 @@ public class TestBenj {
 //		for(int i=0;i<withdrawnItems.size();i++){
 //			ci = withdrawnItems.get(i);
 //
-//			try {
+//			try 
 //				itemBatch = ci.getItemBatch();				
 //				item = ci.getItemBatch().getItem();
 //				
@@ -42,7 +42,14 @@ public class TestBenj {
 //			}										
 //		}		
 		
-		
+		java.util.Date today = new java.util.Date();
+    	long t = today.getTime();
+    	String dt = new java.sql.Date(t).toString().substring(5, 7);
+    	
+    	
+    	System.out.println(dt);
+    	
+    	
 	}
 
 }

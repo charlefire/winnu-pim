@@ -1,5 +1,8 @@
 package winnu.gui;
 import javax.swing.JFrame;
+
+import org.apache.torque.TorqueException;
+
 import winnu.control.WinnuControl;
 import winnu.dao.UserPeer;
 
@@ -327,7 +330,15 @@ public class MainForm extends javax.swing.JFrame {
       void menuitemViewReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemSaleActionPerformed
         clearLayeredPane();
         summaryReportsPanel.setVisible(true);     
-        summaryReportsPanel.refreshReports();
+        try {
+			summaryReportsPanel.refreshReports();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TorqueException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_menuitemSaleActionPerformed
     
       void menuitemNewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemNewItemActionPerformed
