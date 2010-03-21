@@ -25,8 +25,7 @@ public class MainForm extends javax.swing.JFrame {
 		replaceItemPanel.setControl(this.control);
 		specialWithdrawalPanel.setControl(this.control);
 		summaryReportsPanel.setControl(this.control);
-	
-
+		
         clearLayeredPane();
         this.setExtendedState(this.getExtendedState()|JFrame.MAXIMIZED_BOTH);
         
@@ -314,12 +313,14 @@ public class MainForm extends javax.swing.JFrame {
 
     protected void menuitemAddStocksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemAddStocksActionPerformed
         clearLayeredPane();
+        addSupplyPanel.clearFields();
         addSupplyPanel.setVisible(true);
     }//GEN-LAST:event_menuitemAddStocksActionPerformed
 
     protected void menuitemSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemSaleActionPerformed
         clearLayeredPane();
         executeSalePanel.setVisible(true);
+        executeSalePanel.clearFields();
     }//GEN-LAST:event_menuitemSaleActionPerformed
 
     private void menuitemNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemNewUserActionPerformed
@@ -327,21 +328,19 @@ public class MainForm extends javax.swing.JFrame {
         addNewUserPanel.setVisible(true);     
     }//GEN-LAST:event_menuitemNewUserActionPerformed
 
-      void menuitemViewReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemSaleActionPerformed
+    public void menuitemViewReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemSaleActionPerformed
         clearLayeredPane();
         summaryReportsPanel.setVisible(true);     
         try {
 			summaryReportsPanel.refreshReports();
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (TorqueException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }//GEN-LAST:event_menuitemSaleActionPerformed
     
-      void menuitemNewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemNewItemActionPerformed
+    public  void menuitemNewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemNewItemActionPerformed
         clearLayeredPane();
         addItemPanel.setVisible(true);
     }//GEN-LAST:event_menuitemNewItemActionPerformed
@@ -354,6 +353,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void menuitemEditUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemEditUserActionPerformed
         clearLayeredPane();
+        editUserPanel.clearFields();
         editUserPanel.setVisible(true);
     }//GEN-LAST:event_menuitemEditUserActionPerformed
 
@@ -402,17 +402,17 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLayeredPane layeredPane;
     private javax.swing.JMenuBar mainMenuBar;
-      javax.swing.JMenuItem menuitemAddStocks;
+    public  javax.swing.JMenuItem menuitemAddStocks;
     private javax.swing.JMenuItem menuitemDeleteUser;
     private javax.swing.JMenuItem menuitemEditOwnAccount;
     private javax.swing.JMenuItem menuitemEditUser;
-      javax.swing.JMenuItem menuitemLogout;
-      javax.swing.JMenuItem menuitemNewItem;
+    public  javax.swing.JMenuItem menuitemLogout;
+    public  javax.swing.JMenuItem menuitemNewItem;
     private javax.swing.JMenuItem menuitemNewUser;
     private javax.swing.JMenuItem menuitemReplaceItem;
-      javax.swing.JMenuItem menuitemSale;
+    public  javax.swing.JMenuItem menuitemSale;
     private javax.swing.JMenuItem menuitemSpecialWithdrawal;
-      javax.swing.JMenuItem menuitemViewReports;
+    public  javax.swing.JMenuItem menuitemViewReports;
     private javax.swing.JMenu mnuSale;
     private javax.swing.JMenu mnuSupplies;
     private javax.swing.JMenu mnuUser;

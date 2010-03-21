@@ -1,9 +1,7 @@
-
 package winnu.gui;
+
 import java.sql.Date;
-
 import javax.swing.JOptionPane;
-
 import winnu.control.WinnuControl;
 
 @SuppressWarnings("serial")
@@ -36,8 +34,8 @@ public class AddSupplyPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        genericName = new javax.swing.JLabel();
-        brandName = new javax.swing.JLabel();
+        lblGenericName = new javax.swing.JLabel();
+        lblBrandName = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnSelectItem = new javax.swing.JButton();
 
@@ -79,9 +77,9 @@ public class AddSupplyPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Expiration Date:");
 
-        genericName.setText("<select an item>");
+        lblGenericName.setText("<select an item>");
 
-        brandName.setText("<select an item>");
+        lblBrandName.setText("<select an item>");
 
         jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18));
         jLabel5.setText("Add Supply of Item");
@@ -134,9 +132,9 @@ public class AddSupplyPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(genericName)
-                            .addComponent(brandName)
-                            .addComponent(btnSelectItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                            .addComponent(lblGenericName)
+                            .addComponent(lblBrandName)
+                            .addComponent(btnSelectItem))
                         .addContainerGap(190, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
@@ -151,11 +149,11 @@ public class AddSupplyPanel extends javax.swing.JPanel {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(genericName)
+                        .addComponent(lblGenericName)
                         .addGap(12, 12, 12)
-                        .addComponent(brandName)))
+                        .addComponent(lblBrandName)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelectItem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSelectItem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -204,15 +202,14 @@ public class AddSupplyPanel extends javax.swing.JPanel {
         acquisitionCost = Float.parseFloat(txtAcquisitionCost.getText());
         
         //TODO: supplier details        	
-        control.addSuppyController.addSupply(brandName.getText(), expiry, supplier, " ", " ", Float.parseFloat("10"), quantity, acquisitionCost);
+        control.addSuppyController.addSupply(lblBrandName.getText(), expiry, supplier, " ", " ", Float.parseFloat("10"), quantity, acquisitionCost);
       
         
-        JOptionPane.showMessageDialog(null, brandName.getText() +  " has been successfully added.", "Add Stock", 1);
+        JOptionPane.showMessageDialog(null, lblBrandName.getText() +  " has been successfully added.", "Add Stock", 1);
         
         mainform.reloadMainMenu();
     }//GEN-LAST:event_btnAcceptActionPerformed
 
-    
 	private void btnSelectItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectItemActionPerformed
 		SearchItemFrame searchItemFrame = new SearchItemFrame(this.control);
 		searchItemFrame.setVisible(true);
@@ -228,10 +225,22 @@ public class AddSupplyPanel extends javax.swing.JPanel {
 	
 	private void updateView(){		
 		if(!control.getCurrentSelectedItem().equals(null)){
-			genericName.setText(control.getCurrentSelectedItem().getGenericName());
-			brandName.setText(control.getCurrentSelectedItem().getBrandName());
+			lblGenericName.setText(control.getCurrentSelectedItem().getGenericName());
+			lblBrandName.setText(control.getCurrentSelectedItem().getBrandName());
 			btnSelectItem.setText("Change Item");
 		}
+	}
+	
+	public void clearFields() {
+		lblGenericName.setText("<select an item>");
+		lblBrandName.setText("<select an item>");
+		btnSelectItem.setText("Select an Item");
+		txtAcquisitionCost.setText("");
+		txtQuantity.setText("");
+		txtSupplier.setText("");
+		cboMonth.setSelectedIndex(0);
+		cboDay.setSelectedIndex(0);
+		cboYear.setSelectedIndex(0);
 	}
 	
 	private void btnCancelActionPerformed(java.awt.event.ActionEvent evt){
@@ -239,16 +248,15 @@ public class AddSupplyPanel extends javax.swing.JPanel {
 		mainform.reloadMainMenu();
     }
 
-	
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel brandName;
+    private javax.swing.JLabel lblBrandName;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSelectItem;
     private javax.swing.JComboBox cboDay;
     private javax.swing.JComboBox cboMonth;
     private javax.swing.JComboBox cboYear;
-    private javax.swing.JLabel genericName;
+    private javax.swing.JLabel lblGenericName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

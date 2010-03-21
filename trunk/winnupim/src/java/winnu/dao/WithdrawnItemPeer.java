@@ -171,17 +171,20 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 		List<WithdrawnItem> results = new ArrayList<WithdrawnItem>();
 		List<WithdrawnItem> resultList = new ArrayList<WithdrawnItem>();
 		
-		int itemId = ItemPeer.retrieveAllBrandName(brandName).get(0).getItemId();
+		int itemId = ItemPeer.retrieveItemId(brandName);
 		
-		List <ItemBatch> itemBatch = ItemBatchPeer.retrieveAllItemId(itemId);
+		List<ItemBatch> itemBatch = ItemBatchPeer.retrieveAllItemId(itemId);
 
-		for(int i=0;i<itemBatch.size();i++){
+		for(int i=0; i<itemBatch.size(); i++){
 			Criteria criteria = new Criteria();
 			criteria.add(WithdrawnItemPeer.ITEMBATCHID, itemBatch.get(i).getItemBatchId());
-			try{
+			
+			try {
 				resultList = (List<WithdrawnItem>)WithdrawnItemPeer.doSelect(criteria);
-				for(int j=0; j < resultList.size(); j++) results.add(resultList.get(j));
-			}catch(Exception e){
+				for(int j=0; j < resultList.size(); j++)
+					results.add(resultList.get(j));
+			}
+			catch(Exception e) {
 				e.printStackTrace();
 			}
 		}

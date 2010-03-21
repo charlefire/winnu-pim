@@ -28,49 +28,42 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
 
     private void initComponents() {
         txtPatientName = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblPatientName = new javax.swing.JLabel();
         txtDoctorName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        lblDoctorName = new javax.swing.JLabel();
+        spaneSelectedItems = new javax.swing.JScrollPane();
         lstSelectedItems = new javax.swing.JList();
         txtDoctorLicenseNo = new javax.swing.JTextField();
         txtDoctorS2No = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblDoctorLicenseNo = new javax.swing.JLabel();
+        lblDoctorS2No = new javax.swing.JLabel();
+        lblSale = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        pnlExecuteSale = new javax.swing.JPanel();
         txtSearchBox = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        lblSearch = new javax.swing.JLabel();
+        spaneSearchResults = new javax.swing.JScrollPane();
         lstSearchResults = new javax.swing.JList();
-        txtSearch = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         btnAddItemToSale = new javax.swing.JButton();
         btnOverrideSale = new javax.swing.JButton();
         txtQuantity = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-//added button
+        lblQuantity = new javax.swing.JLabel();
+        lblPurchaseItems = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
         
-        txtPatientName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPatientNameActionPerformed(evt);
-            }
-        });
+        lblPatientName.setText("Name of Patient:");
 
-        jLabel1.setText("Name of Patient:");
+        lblDoctorName.setText("Prescribing Doctor:");
 
-        jLabel2.setText("Prescribing Doctor:");
+        spaneSelectedItems.setViewportView(lstSelectedItems);
 
-        jScrollPane1.setViewportView(lstSelectedItems);
+        lblDoctorLicenseNo.setText("Doctor's License No.:");
 
-        jLabel4.setText("Doctor's License No.:");
+        lblDoctorS2No.setText("Doctor's S2 No.:");
 
-        jLabel5.setText("Doctor's S2 No.:");
-
-        jLabel6.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 24));
-        jLabel6.setText("Sale");
+        lblSale.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 24));
+        lblSale.setText("Sale");
 
         btnSubmit.setText("Confirm!");
         btnSubmit.setEnabled(false);
@@ -87,22 +80,22 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
                 btnOverrideSaleActionPerformed(evt);
             }
         });
-//added button
+
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
+        pnlExecuteSale.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
 
-        jLabel3.setText("Search:");
+        lblSearch.setText("Search:");
 
         lstSearchResults.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jScrollPane2.setViewportView(lstSearchResults);
+        spaneSearchResults.setViewportView(lstSearchResults);
 
-        txtSearch.setText("Go!");
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("Go!");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
             }
@@ -115,57 +108,51 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
             }
         });
 
-        txtQuantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDoctorName3ActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Quantity:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        lblQuantity.setText("Quantity:");
+        
+        lblPurchaseItems.setText("Items to Purchase:");
+        
+        javax.swing.GroupLayout pnlExecuteSaleLayout = new javax.swing.GroupLayout(pnlExecuteSale);
+        pnlExecuteSale.setLayout(pnlExecuteSaleLayout);
+        pnlExecuteSaleLayout.setHorizontalGroup(
+            pnlExecuteSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlExecuteSaleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                .addGroup(pnlExecuteSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spaneSearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                    .addGroup(pnlExecuteSaleLayout.createSequentialGroup()
+                        .addGroup(pnlExecuteSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlExecuteSaleLayout.createSequentialGroup()
+                                .addComponent(lblQuantity)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAddItemToSale))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlExecuteSaleLayout.createSequentialGroup()
+                                .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlExecuteSaleLayout.setVerticalGroup(
+            pnlExecuteSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlExecuteSaleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(pnlExecuteSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch)
                     .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearch))
+                    .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addComponent(spaneSearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                .addGroup(pnlExecuteSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQuantity)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddItemToSale))                    
                 .addContainerGap())
         );
-
-        jLabel8.setText("Items to Purchase:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -175,14 +162,14 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
+                        .addComponent(lblSale, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
                         .addGap(610, 610, 610))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(lblDoctorS2No)
+                            .addComponent(lblDoctorLicenseNo)
+                            .addComponent(lblDoctorName)
+                            .addComponent(lblPatientName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -195,14 +182,14 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
                                     .addComponent(txtDoctorS2No))
                                 .addContainerGap(1049, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lblPurchaseItems)
                         .addContainerGap(1387, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(spaneSelectedItems, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(pnlExecuteSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(btnSubmit)
@@ -217,29 +204,29 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblSale, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblDoctorName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDoctorLicenseNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblDoctorLicenseNo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(lblDoctorS2No)
                     .addComponent(txtDoctorS2No, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblPatientName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(lblPurchaseItems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlExecuteSale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(spaneSelectedItems, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 	.addComponent(btnSubmit)
@@ -247,14 +234,6 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
                 	.addComponent(btnCancel))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
-    }
-
-    private void txtPatientNameActionPerformed(java.awt.event.ActionEvent evt) {
-    	
-    }
-
-    private void txtDoctorName3ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
 	private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {       
@@ -282,7 +261,7 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
 		
 		overrideSaleForm.getAdminInfo();
     }
-//event for new button cancel
+
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
     	txtDoctorName.setText("");
         txtDoctorLicenseNo.setText("");
@@ -325,7 +304,7 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
 	}
 	
 	private void btnAddItemToSaleActionPerformed(java.awt.event.ActionEvent evt) {
-		if( ItemPeer.getTotalQuantity(itemSearchResult.get(lstSearchResults.getSelectedIndex()).getBrandName()) >= Integer.parseInt(txtQuantity.getText())){
+		if(ItemPeer.getTotalQuantity(itemSearchResult.get(lstSearchResults.getSelectedIndex()).getBrandName()) >= Integer.parseInt(txtQuantity.getText())){
 			btnOverrideSale.setEnabled(true);
 			control.addItemToSaleController.addItemToSale(itemSearchResult.get(lstSearchResults.getSelectedIndex()),Integer.parseInt(txtQuantity.getText()));
 			updateItemList();
@@ -335,23 +314,39 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
 		}
 		
 	}
+	
+	public void clearFields() {
+		txtDoctorName.setText("");
+		txtDoctorLicenseNo.setText("");
+		txtDoctorS2No.setText("");
+		txtQuantity.setText("");
+		txtPatientName.setText("");
+		txtSearchBox.setText("");
+		btnSubmit.setEnabled(false);
+		btnOverrideSale.setEnabled(false);
+		items.clear();
+		item = "";
+		itemSearchResult.clear();
+		spaneSelectedItems.setViewportView(lstSelectedItems = new javax.swing.JList());
+		spaneSearchResults.setViewportView(lstSearchResults = new javax.swing.JList());
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
 	private winnu.gui.OverrideSaleForm overrideSaleForm;
 	private javax.swing.JButton btnAddItemToSale;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnOverrideSale;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblPatientName;
+    private javax.swing.JLabel lblDoctorName;
+    private javax.swing.JLabel lblSearch;
+    private javax.swing.JLabel lblDoctorLicenseNo;
+    private javax.swing.JLabel lblDoctorS2No;
+    private javax.swing.JLabel lblSale;
+    private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblPurchaseItems;
+    private javax.swing.JPanel pnlExecuteSale;
+    private javax.swing.JScrollPane spaneSelectedItems;
+    private javax.swing.JScrollPane spaneSearchResults;
     private javax.swing.JList lstSearchResults;
     private javax.swing.JList lstSelectedItems;
     private javax.swing.JTextField txtDoctorName;
@@ -359,7 +354,7 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDoctorS2No;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtPatientName;
-    private javax.swing.JButton txtSearch;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JTextField txtSearchBox;
 //added buttons
     private javax.swing.JButton btnCancel;

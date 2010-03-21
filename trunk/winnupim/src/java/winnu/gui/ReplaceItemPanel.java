@@ -1,6 +1,7 @@
 package winnu.gui;
 import winnu.control.WinnuControl;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class ReplaceItemPanel extends javax.swing.JPanel {
 	private WinnuControl control;
@@ -28,6 +29,7 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
         spaneSale = new javax.swing.JScrollPane();
         lstResults = new javax.swing.JList();
         btnConfirm = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         btnSearchItem = new javax.swing.JButton();
         lblItemBatch = new javax.swing.JLabel();
         rbtnDamaged = new javax.swing.JRadioButton();
@@ -59,6 +61,13 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmActionPerformed(evt);
+            }
+        });
+        
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -106,7 +115,8 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
                                     .addComponent(rbtnDamaged)
                                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rbtnExpired)
-                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,18 +160,50 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
                 .addComponent(rbtnExpired)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirm)
+                .addGap(12, 12, 12)
+                .addComponent(btnCancel)
                 .addContainerGap(164, Short.MAX_VALUE))
         );
     }
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
-    	int selectedIndex = -1;
+    	lstResults.setSelectedIndex(-1);
     	
-    	if(!lstResults.getSelectedValue().equals(null)) {
-    		selectedIndex = lstResults.getSelectedIndex();
-    		
-    		control.replaceItemController.replaceItem(selectedIndex, Integer.parseInt(txtQuantity.getText()), rbtnDamaged.isSelected() ? rbtnDamaged.getText() : rbtnExpired.getText());
+    	int selectedIndex = lstResults.getSelectedIndex();
+    	String quantity = txtQuantity.getText();
+    	
+    	if(selectedIndex >= 0) {
+    		if(!quantity.equals("")) {
+	    		if(control.replaceItemController.replaceItem(selectedIndex, Integer.parseInt(txtQuantity.getText()), rbtnDamaged.isSelected() ? rbtnDamaged.getText() : rbtnExpired.getText())) {
+		    		JOptionPane.showMessageDialog(null, "Replacement of " + txtQuantity.getText() + " pcs of "
+	    				+ control.getCurrentSelectedItem().getBrandName() + " successful.", "Replacement of Item", JOptionPane.INFORMATION_MESSAGE);
+	    		}
+	    		else
+	    			JOptionPane.showMessageDialog(null, "Quantity more/less than limit. Re-check input quantity.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
+
+    		}
+    		else {
+    			JOptionPane.showMessageDialog(null, "Type in Quantity.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
+    		}
     	}
+    	else {
+    		if(!quantity.equals(""))
+    			JOptionPane.showMessageDialog(null, "Select an Item first.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
+    		else
+    			JOptionPane.showMessageDialog(null, "Select an Item first.\nInput quantity." , "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
+    	}
+    	
+    	updateView();
+    }
+    
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
+    	lblGenericName.setText("<select an item>");
+    	lblBrandName.setText("<select an item>");
+    	txtQuantity.setText("");
+    	btnSearchItem.setText("Select Item");
+    	spaneSale.setViewport(null);
+    	mainform.reloadMainMenu();
+    	this.setVisible(false);
     }
 
     private void btnSearchItemActionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,17 +226,20 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
 			lblGenericName.setText(control.getCurrentSelectedItem().getGenericName());
 			lblBrandName.setText(control.getCurrentSelectedItem().getBrandName());
 			btnSearchItem.setText("Change Item");
-
-			items = control.replaceItemController.getWithdrawnItems();
+			
+			items = control.replaceItemController.getWithdrawnItems(control.getCurrentSelectedItem().getBrandName());
 			
 	    	lstResults.setModel(items);
+    	}
+    	else {
+    		JOptionPane.showMessageDialog(null, "Please select an item.", "Select Item", JOptionPane.WARNING_MESSAGE);
     	}
     	
 	}
 
-    // Variables declaration - do not modify
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnSearchItem;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JScrollPane spaneSale;
     private javax.swing.JLabel lblItemName;
     private javax.swing.JLabel lblItemName1;
@@ -209,5 +254,4 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbtnDamaged;
     private javax.swing.JRadioButton rbtnExpired;
     private javax.swing.JTextField txtQuantity;
-    // End of variables declaration
 }

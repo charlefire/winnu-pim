@@ -1,8 +1,7 @@
 package winnu.gui;
 
 import java.util.List;
-
-import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 import winnu.control.WinnuControl;
 import winnu.dao.Item;
@@ -18,17 +17,17 @@ public class SearchItemFrame extends javax.swing.JFrame {
     }
 	
     private void initComponents() {
-
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listResults = new javax.swing.JList();
+    	lstModel= null;
+        spaneResults = new javax.swing.JScrollPane();
+        lstResults = new javax.swing.JList();
         btnSelect = new javax.swing.JButton();
         txtSearchItem = new javax.swing.JTextField();
         btnSearchItems = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblSearch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jScrollPane1.setViewportView(listResults);
+        spaneResults.setViewportView(lstResults);
 
         btnSelect.setText("Select an Item");
         btnSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -44,7 +43,7 @@ public class SearchItemFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Search:");
+        lblSearch.setText("Search:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,9 +52,9 @@ public class SearchItemFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(spaneResults, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                        .addComponent(lblSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -70,9 +69,9 @@ public class SearchItemFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearchItems)
                     .addComponent(txtSearchItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblSearch))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spaneResults, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSelect)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -82,37 +81,39 @@ public class SearchItemFrame extends javax.swing.JFrame {
     }
 
     private void btnSearchItemsActionPerformed(java.awt.event.ActionEvent evt) {
-    	DefaultListModel listModel= new DefaultListModel();
+    	lstModel = new javax.swing.DefaultListModel();
+    	
     	item = control.itemSearchController.searchItem(txtSearchItem.getText());	   
   	
     	for(int i=0;i<item.size();i++){
-    		listModel.addElement(item.get(i).getBrandName() + " --- " + item.get(i).getGenericName());
+    		lstModel.addElement(item.get(i).getBrandName() + " --- " + item.get(i).getGenericName());
     	}
     	
-    	listResults.setModel(listModel);
+    	lstResults.setModel(lstModel);
     }
     
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {
-		
-    	Item selected = null; 
-		if(listResults.getSelectedIndex()==-1){
-			System.out.println("no item selected");
-		}else{
-			selected = (Item) item.get(listResults.getSelectedIndex());
-			control.setCurrentSelectedItem(selected);
-			
-			this.dispose();
-		}		
-    
+    	if(lstModel != null) {
+	    	if(lstResults.getSelectedIndex() >= 0) {
+				control.setCurrentSelectedItem((Item)item.get(lstResults.getSelectedIndex()));
+				this.dispose();
+			}
+	    	else {
+	    		JOptionPane.showMessageDialog(null, "Select an Item first.", "ERROR: Search Item", JOptionPane.ERROR_MESSAGE);
+			}
+    	}
+    	else {
+    		JOptionPane.showMessageDialog(null, "Search an Item first.", "ERROR: Search Item", JOptionPane.ERROR_MESSAGE);
+    	}
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.DefaultListModel lstModel;
     private javax.swing.JButton btnSearchItems;
     private javax.swing.JButton btnSelect;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList listResults;
+    private javax.swing.JLabel lblSearch;
+    private javax.swing.JScrollPane spaneResults;
+    private javax.swing.JList lstResults;
     private javax.swing.JTextField txtSearchItem;
     // End of variables declaration//GEN-END:variables
 

@@ -40,7 +40,6 @@ public class WinnuControl {
         overrideSaleController = new OverrideSaleController(this);
     }
 
-    
     public User getCurrentUser(){
         return currentUser;
     }
@@ -49,7 +48,6 @@ public class WinnuControl {
         currentUser = user;
     }
 
-    
     public Item getCurrentSelectedItem(){
         return currentSelectedItem;
     }
@@ -57,6 +55,7 @@ public class WinnuControl {
     public void setCurrentSelectedItem(Item item) {
         currentSelectedItem = item;
     }  
+ 
     public User getCurrentSelectedUser(){
         return currentSelectedUser;
     }
