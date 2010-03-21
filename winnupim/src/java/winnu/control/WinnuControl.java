@@ -37,7 +37,6 @@ public class WinnuControl {
         specialWithdrawalController = new SpecialWithdrawalController(this);
         replaceItemController = new ReplaceItemController(this);
         reportController = new ReportController();
-        overrideSaleController = new OverrideSaleController(this);
     }
 
     
