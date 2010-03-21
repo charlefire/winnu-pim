@@ -1,6 +1,8 @@
 
 package winnu.gui;
 
+import org.apache.torque.TorqueException;
+
 import winnu.control.ReportController;
 import winnu.control.WinnuControl;
 
@@ -614,7 +616,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_AISbuttonActionPerformed
 
-    public void refreshReports(){
+    public void refreshReports() throws NumberFormatException, TorqueException{
         Object[][] modelObject = ReportController.retrieveAvailableInventory();    
         
         //Available Inventory
@@ -715,7 +717,14 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                     "Date", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
                 }
             ));
-            jScrollPane8.setViewportView(DPTable);
+            
+        Object[][] modelObject10 = ReportController.retrieveDrugsExpiring(); 
+        DETable.setModel(new javax.swing.table.DefaultTableModel(
+               modelObject10,
+                new String [] {
+                    "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
+                }
+            ));
 
         
     }

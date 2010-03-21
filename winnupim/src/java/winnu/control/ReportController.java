@@ -276,30 +276,68 @@ public class ReportController {
 	
 	public static Object[][] retrieveDrugsExpiring(){
 		List<StockedItem> list = StockedItemPeer.retrieveAll();
-        StockedItem item;
-        ItemBatch itemBatch;
-        Item itemName;
+        StockedItem stockedItem;
 
-        Object[][] modelObject = new Object[list.size()][];         
-        //if(item.getItemBatch().getExpirationDate().toString())
+        int count=0;
+
+        java.util.Date today = new java.util.Date();
+    	long t = today.getTime();
+    	String dt = new java.sql.Date(t).toString().substring(5, 7);
         
         for(int i=0; i< list.size(); i++){
-        	item = list.get(i);
-        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
-        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
+        	stockedItem = list.get(i);
         	
-        	Object[] model = null;
-			try {
-				model = new Object[]{item.getItemBatch().getPurchasedDate(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getCurrentPrice()};			
+        	try {
+				if((Integer.parseInt(dt) - 3) == Integer.parseInt(stockedItem.getItemBatch().getExpirationDate().toString().substring(5, 7))){
+					count++;
+				}
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			} catch (TorqueException e) {
 				// TODO Auto-generated catch block
-				System.out.println("hay");
 				e.printStackTrace();
 			}
-			modelObject[i]= model;
+        }           
+        
+        Object[][] modelObject = new Object[count][];         
+        
+        count=0;
+        for(int i=0; i< list.size(); i++){
+        	stockedItem = list.get(i);
+        	        	
+        	try {
+				if((Integer.parseInt(dt) - 3) == Integer.parseInt(stockedItem.getItemBatch().getExpirationDate().toString().substring(5, 7))){
+					Object[] model = null;
+						try {
+							model = new Object[]{stockedItem.getItemBatch().getItemBatchId(),stockedItem.getItemBatch().getItem().getBrandName(), stockedItem.getItemBatch().getItem().getGenericName(), stockedItem.getItemBatch().getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(stockedItem.getItemBatch().getItem().getBrandName()), "pcs", stockedItem.getItemBatch().getAcquisitionCost(), stockedItem.getCurrentPrice()};
+						} catch (TorqueException e) {
+							e.printStackTrace();
+						}
+					
+					modelObject[i]= model;
+					count++;
+				}
+				
+				else{
+					count--;
+					
+				}
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TorqueException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }           
         
         return modelObject;        
+	}
+	
+	private int getDateDifference(String date1, String date2){
+		
+		return 3;
 	}
 	
 
