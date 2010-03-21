@@ -314,6 +314,7 @@ public class ReportController {
 						} catch (TorqueException e) {
 							e.printStackTrace();
 						}
+						
 				}
 				
 				else{
