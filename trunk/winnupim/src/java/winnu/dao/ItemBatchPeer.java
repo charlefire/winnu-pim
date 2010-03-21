@@ -100,9 +100,9 @@ public class ItemBatchPeer extends winnu.dao.BaseItemBatchPeer {
 
 	//retrieve using item id
 	@SuppressWarnings("unchecked")
-	public static List<ItemBatch> retrieveAllItemId(int query){
+	public static List<ItemBatch> retrieveAllItemId(int itemId){
 		Criteria criteria = new Criteria();
-		criteria.add(ItemBatchPeer.ITEMID, query);
+		criteria.add(ItemBatchPeer.ITEMID, itemId);
 		try{
 			return (List<ItemBatch>)ItemBatchPeer.doSelect(criteria);
 		}catch(Exception e){

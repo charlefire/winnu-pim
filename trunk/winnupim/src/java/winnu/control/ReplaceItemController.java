@@ -25,7 +25,6 @@ public class ReplaceItemController {
     }
 
     public void replaceItem(int i, int quantity, String reason) {
-    	String itemName = control.getCurrentSelectedItem().getBrandName();
     	int itemId = WithdrawnItemPeer.retrieveWithdrawnItem(items.get(i).getWithdrawnItemId()).getWithdrawnItemId();
     	int batchId = WithdrawnItemPeer.retrieveWithdrawnItem(items.get(i).getWithdrawnItemId()).getItemBatchId();
     	int doctorId = WithdrawnItemPeer.retrieveWithdrawnItem(items.get(i).getWithdrawnItemId()).getDoctorId();
@@ -39,9 +38,9 @@ public class ReplaceItemController {
 			e.printStackTrace();
 		}
     	
-    	int addedToStocked = StockedItemPeer.retrieveAllItemBatchId(batchId).get(0).getQuantity() + quantity;
+    	int addedToStocked = StockedItemPeer.retrieveAllItemBatchId(Integer.toString(batchId)).get(0).getQuantity() + quantity;
     	int removedFromWithdrawn = WithdrawnItemPeer.retrieveUsingSaleId(batchId, saleId).get(0).getQuantity() - quantity;
-    	float currentPrice = (float)StockedItemPeer.retrieveAllItemBatchId(batchId).get(0).getCurrentPrice();
+    	float currentPrice = (float)StockedItemPeer.retrieveAllItemBatchId(Integer.toString(batchId)).get(0).getCurrentPrice();
     	float sellingPrice = (float)WithdrawnItemPeer.retrieveAllItemBatchId(Integer.toString(batchId)).get(0).getSellingPrice();
     	
     	StockedItemPeer.updateStockedItem(batchId, currentPrice, addedToStocked, batchId);

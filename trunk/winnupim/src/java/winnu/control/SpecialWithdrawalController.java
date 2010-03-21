@@ -18,10 +18,10 @@ public class SpecialWithdrawalController {
     }
 
     public boolean withdrawItem(String brandName, int i, int quantity, String reason) {    	
-    	System.out.print(itemBatch.get(i) + " - " + ItemBatchPeer.retrieveAllBatchNo(ItemPeer.retrieveItemId(brandName)).size());
-
-    	int batchId = StockedItemPeer.retrieveAllItemBatchId(i+1).get(0).getItemBatchId();
+    	int batchId = ItemBatchPeer.retrieveAllItemId(ItemPeer.retrieveItemId(brandName)).get(i).getItemBatchId();
     	int itemId = ItemPeer.retrieveItemId(brandName);
+    	
+    	System.out.print(ItemBatchPeer.retrieveAllItemId(ItemPeer.retrieveItemId(brandName)));
     	
     	if(quantity < (StockedItemPeer.retrieveUsingBatchId(batchId).get(0).getQuantity()
     					- ItemPeer.retrieveItem(itemId).getMinimumSupplyLimit())) {
@@ -34,8 +34,6 @@ public class SpecialWithdrawalController {
 			
 			StockedItemPeer.updateStockedItem(batchId, currentPrice, removedFromStocked, batchId);
 			WithdrawnItemPeer.addWithdrawnItem(0, date, reason, batchId, userId, quantity);
-			
-			System.out.print(itemBatch.get(i) + " - " + quantity);
 			
 			return true;
     	}
@@ -55,11 +53,12 @@ public class SpecialWithdrawalController {
 	    	for(int i = 0; i < maxBatchNo; i++) {
 	    		itemBatch.add(i, itemBatches.get(i).getBatchNo());
 	    		items.add(i, "Batch: " + Integer.toString(itemBatches.get(i).getBatchNo()) 
-	    				+ " - Quantity: " + StockedItemPeer.retrieveAllItemBatchId(itemBatches.get(i).getItemBatchId()).get(0).getQuantity());
-	    	
-	    		System.out.print("Batch: " + i + " - " + StockedItemPeer.retrieveAllItemBatchId(itemBatches.get(i).getItemBatchId()).get(0).getQuantity());
+	    				+ " - Quantity: " + StockedItemPeer.retrieveStockedItem(
+	    										ItemBatchPeer.retrieveAllItemId(ItemPeer.retrieveItemId(brandName))
+	    										.get(i).getItemBatchId()).getQuantity());
 	    	}
 	    }
+    	
     	return items;
     }
 
