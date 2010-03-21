@@ -134,8 +134,8 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         layeredPane.setBackground(new java.awt.Color(153, 153, 255));
-        bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("pim.png"))); // NOI18N
-        bgImage.setBounds(880, 240, 340, 380);
+        bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("pim.png"))); 
+        bgImage.setBounds(350, 20, 650, 610);
         layeredPane.add(bgImage, javax.swing.JLayeredPane.DEFAULT_LAYER);
         layeredPane.setOpaque(true);
         addNewUserPanel.setBounds(30, 30, 550, 500);
