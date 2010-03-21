@@ -164,6 +164,90 @@ public class ReportController {
         return modelObject;        
 	}
 	
+
+	public static Object[][] retrieveSales(){
+		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveAll();
+        WithdrawnItem item;
+        ItemBatch itemBatch;
+        Item itemName;
+
+        Object[][] modelObject = new Object[list.size()][];         
+        
+        for(int i=0; i< list.size(); i++){
+        	item = list.get(i);
+        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
+        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
+        	
+        	Object[] model = null;
+			try {
+				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getSale().getCustomerName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};
+			} catch (TorqueException e) {
+				// TODO Auto-generated catch block
+				System.out.println("hay");
+				e.printStackTrace();
+			}
+			modelObject[i]= model;
+        }           
+        
+        return modelObject;        
+	}
+	
+	public static Object[][] retrieveSalesPerPatient(){
+		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveAll();
+        WithdrawnItem item;
+        ItemBatch itemBatch;
+        Item itemName;
+
+        Object[][] modelObject = new Object[list.size()][];         
+        
+        for(int i=0; i< list.size(); i++){
+        	item = list.get(i);
+        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
+        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
+        	
+        	Object[] model = null;
+			try {
+				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};
+			} catch (TorqueException e) {
+				// TODO Auto-generated catch block
+				System.out.println("hay");
+				e.printStackTrace();
+			}
+			modelObject[i]= model;
+        }           
+        
+        return modelObject;        
+	}
+	
+	public static Object[][] retrieveSRDP(){
+		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveAll();
+        WithdrawnItem item;
+        ItemBatch itemBatch;
+        Item itemName;
+
+        Object[][] modelObject = new Object[list.size()][];         
+        
+        for(int i=0; i< list.size(); i++){
+        	item = list.get(i);
+        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
+        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
+        	
+        	Object[] model = null;
+			try {
+				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getDoctor().getDoctorName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};			
+			} catch (TorqueException e) {
+				// TODO Auto-generated catch block
+				System.out.println("hay");
+				e.printStackTrace();
+			}
+			modelObject[i]= model;
+        }           
+        
+        return modelObject;        
+	}
+	
+	
+	
 	
 
 }
