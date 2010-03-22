@@ -322,7 +322,7 @@ public class MainForm extends javax.swing.JFrame {
         executeSalePanel.setVisible(true);
         executeSalePanel.clearFields();
     }//GEN-LAST:event_menuitemSaleActionPerformed
-
+    
     private void menuitemNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemNewUserActionPerformed
         clearLayeredPane();
         addNewUserPanel.setVisible(true);     
