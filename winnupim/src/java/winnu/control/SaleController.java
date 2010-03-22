@@ -81,7 +81,7 @@ public class SaleController {
 		        		remainingItems = remainingItems - si.getQuantity();		        		
 		        	}else{
 		        		StockedItemPeer.updateStockedItemQuantity(si.getStockedItemId(), si.getQuantity()-remainingItems);
-		        		WithdrawnItemPeer.addWithdrawnItem((float)si.getCurrentPrice(), dt, reason, doctor_id, sale_id, itemBatch, userId, remainingItems);
+		        		WithdrawnItemPeer.addWithdrawnItem((float)si.getCurrentPrice(), dt, "Sale", doctor_id, sale_id, itemBatch, userId, remainingItems);
 		        		remainingItems = 0;	        		
 		        	}	        	
 		        	

@@ -623,9 +623,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         AITable.setEnabled(false);
         AITable.setModel(new javax.swing.table.DefaultTableModel(
             modelObject,
-            new String [] { 
-            	"Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"            
-            }
+            new String [] {"Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"}
         ));
         //===================//
         
@@ -656,7 +654,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         
         Object[][] modelObject4 = ReportController.retrieveItemsForReorder();    
         
-        //Items For Reorder
         IRTable.setEnabled(false);
         IRTable.setModel(new javax.swing.table.DefaultTableModel(
             modelObject4,
@@ -668,7 +665,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         
         Object[][] modelObject5 = ReportController.retrieveWithdrawnItem();    
         
-        //Items For Reorder
         DSTable.setEnabled(false);
         DSTable.setModel(new javax.swing.table.DefaultTableModel(
             modelObject5,
@@ -683,7 +679,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         STable.setModel(new javax.swing.table.DefaultTableModel(
                 modelObject6,
                 new String [] {
-                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
+                    "Date1", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
                 }
             ));
         

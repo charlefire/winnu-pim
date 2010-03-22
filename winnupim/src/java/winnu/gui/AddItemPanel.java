@@ -1,4 +1,3 @@
-
 package winnu.gui;
 import java.sql.Date;
 
@@ -13,7 +12,6 @@ public class AddItemPanel extends javax.swing.JPanel {
     @SuppressWarnings("unused")
 	private boolean supplierExists=false;
 
-    /** Creates new form thePanel */
     public AddItemPanel(MainForm mainform) {
     	this.mainform = mainform;
         initComponents();
@@ -24,7 +22,6 @@ public class AddItemPanel extends javax.swing.JPanel {
     }
 
     private void initComponents() {
-
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         txtGenericName = new javax.swing.JTextField();
@@ -507,27 +504,21 @@ public class AddItemPanel extends javax.swing.JPanel {
          txtOtherType.setText("");
     }
     
-    private void txtSupplierAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSupplierAddressActionPerformed
+    private void txtSupplierAddressActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void txtSupplierContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSupplierContactNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSupplierContactNoActionPerformed
+    private void txtSupplierContactNoActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void txtSupplierNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSupplierNameFocusLost
+    private void txtSupplierNameFocusLost(java.awt.event.FocusEvent evt) {
         if (control.addItemController.isExistingSupplier(txtSupplierName.getText())){
             this.supplierExists = true;
-            
-            //txtSupplierAddress.setText(); //yung address nung existitng
-            //txtSupplierContactNo.setText(""); //yung contact no ng address nung exsisting
-            
         }else{
             this.supplierExists = false;
             txtSupplierAddress.setText("");
             txtSupplierContactNo.setText("");
         }
-    }//GEN-LAST:event_txtSupplierNameFocusLost
+    }
     
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt){
     	//this.setVisible(false);

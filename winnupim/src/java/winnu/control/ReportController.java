@@ -16,9 +16,7 @@ import winnu.dao.WithdrawnItemPeer;
 public class ReportController {
 
 	public static List<Item> retrieveFromItem(){
-
 		return (List<Item>)ItemPeer.retrieveAllItems();
-		
 	}
 	
 	public static Object[][] retrieveAvailableInventory(){
@@ -66,8 +64,7 @@ public class ReportController {
 			} catch (TorqueException e) {
 				e.printStackTrace();
 			}
-        }           
-        
+        }                   
         return modelObject;        
 	}
 	
@@ -107,7 +104,6 @@ public class ReportController {
         		count++;
         	}
         }           
-        
         Object[][] modelObject = new Object[count][];         
         
         count=0;
@@ -118,19 +114,17 @@ public class ReportController {
         	
         	if(ItemPeer.getTotalQuantity(item.getBrandName()) < item.getMinimumSupplyLimit() ){
         		Object[] model = null;
-					try {
-						model = new Object[]{item.getItemId(),item.getBrandName(), item.getGenericName(), itemBatch.getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(item.getBrandName()), "pcs", itemBatch.getAcquisitionCost(), stockedItem.getCurrentPrice()};
-					} catch (TorqueException e) {
-						e.printStackTrace();
-					}
+        		
+				try {
+					model = new Object[]{item.getItemId(),item.getBrandName(), item.getGenericName(), itemBatch.getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(item.getBrandName()), "pcs", itemBatch.getAcquisitionCost(), stockedItem.getCurrentPrice()};
+				} catch (TorqueException e) {
+					e.printStackTrace();
+				}
 				
 				modelObject[i-1]= model;
 				count++;
-        	}
-        	
-        	else{
-        		count--;
-        		
+        	}else{
+        		count--;        		
         	}
         }           
         
@@ -142,23 +136,33 @@ public class ReportController {
         WithdrawnItem item;
         ItemBatch itemBatch;
         Item itemName;
-
-        Object[][] modelObject = new Object[list.size()][];         
+        
+        int count=0;
         
         for(int i=0; i< list.size(); i++){
         	item = list.get(i);
-        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
-        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
         	
-        	Object[] model = null;
-			try {
-				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getSale().getCustomerName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice()};
-			} catch (TorqueException e) {
-				// TODO Auto-generated catch block
-				System.out.println("hay");
-				e.printStackTrace();
-			}
-			modelObject[i]= model;
+        	if(list.get(i).getReason().equals("Sale")){
+        		count++;
+        	}
+        }                  
+
+        Object[][] modelObject = new Object[count][];         
+        
+        for(int i=0; i< list.size(); i++){
+        	if(list.get(i).getReason().equals("Sale")){
+	        	item = list.get(i);
+	        	itemBatch = ItemBatchPeer.retrieveItemBatch(item.getItemBatchId());
+	        	itemName = ItemPeer.retrieveItem(itemBatch.getItemId());
+	        	
+	        	Object[] model = null;
+				try {
+					model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getSale().getCustomerName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice()};
+				} catch (TorqueException e) {
+					e.printStackTrace();
+				}
+				modelObject[i]= model;
+        	}
         }           
         
         return modelObject;        
@@ -166,7 +170,7 @@ public class ReportController {
 	
 
 	public static Object[][] retrieveSales(){
-		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveAll();
+		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveSoldItems();
         WithdrawnItem item;
         ItemBatch itemBatch;
         Item itemName;
@@ -182,8 +186,6 @@ public class ReportController {
 			try {
 				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getSale().getCustomerName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};
 			} catch (TorqueException e) {
-				// TODO Auto-generated catch block
-				System.out.println("hay");
 				e.printStackTrace();
 			}
 			modelObject[i]= model;
@@ -193,7 +195,7 @@ public class ReportController {
 	}
 	
 	public static Object[][] retrieveSalesPerPatient(){
-		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveAll();
+		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveSoldItems();
         WithdrawnItem item;
         ItemBatch itemBatch;
         Item itemName;
@@ -207,16 +209,13 @@ public class ReportController {
         	
         	Object[] model = null;
 			try {
-				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};
+				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getSale().getCustomerName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};
 			} catch (TorqueException e) {
-				// TODO Auto-generated catch block
-				System.out.println("hay");
 				e.printStackTrace();
 			}
 			modelObject[i]= model;
-        }           
-        
-        return modelObject;        
+        }                   
+        return modelObject;       
 	}
 	
 	public static Object[][] retrieveSRDP(){
@@ -236,7 +235,6 @@ public class ReportController {
 			try {
 				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getDoctor().getDoctorName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};			
 			} catch (TorqueException e) {
-				// TODO Auto-generated catch block
 				System.out.println("hay");
 				e.printStackTrace();
 			}
@@ -292,11 +290,9 @@ public class ReportController {
 						count++;
 					}
 				} catch (TorqueException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         }           
