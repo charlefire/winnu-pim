@@ -121,7 +121,7 @@ public class ReportController {
 					e.printStackTrace();
 				}
 				
-				modelObject[i-1]= model;
+				modelObject[i]= model;
 				count++;
         	}else{
         		count--;        		
