@@ -32,7 +32,7 @@ public class AddItemController {
     		int itemBatchId;
     		int supplierId;
     		
-    	
+    		System.out.println("test 1");
     		ItemPeer.addItem(genericName, brandName, classification, type, minimumSupplyLimit,control.getCurrentUser().getUserId());
     		
     		itemId = ItemPeer.getMaxItemId();

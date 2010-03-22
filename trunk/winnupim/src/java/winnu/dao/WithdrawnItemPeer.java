@@ -245,5 +245,17 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 			return new ArrayList<WithdrawnItem>();
 		}
 	}
+
+
+	public static List<WithdrawnItem> retrieveSoldItems(){
+		Criteria criteria = new Criteria();
+		criteria.add(WithdrawnItemPeer.REASON, "Sale");
+		try{
+			return (List<WithdrawnItem>)WithdrawnItemPeer.doSelect(criteria);
+		}catch(Exception e){
+			e.printStackTrace();
+			return new ArrayList<WithdrawnItem>();
+		}
+	}
 	
 }

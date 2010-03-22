@@ -19,13 +19,16 @@ public class ItemBatchPeer extends winnu.dao.BaseItemBatchPeer {
 		criteria.add(ItemBatchPeer.SUPPLIERID, supplierId);
 		criteria.add(ItemBatchPeer.ITEMID, itemId);
 		criteria.add(ItemBatchPeer.ACQUISITIONCOST, acquisitionCost);
-		
+
+		System.out.println("test 2");
 		java.util.Date today = new java.util.Date();
     	long t = today.getTime();
     	java.sql.Date dt = new java.sql.Date(t);
-		
+
+		System.out.println("test 3");
 		criteria.add(ItemBatchPeer.PURCHASEDDATE, dt);
-		
+
+		System.out.println("test 4");
 		try{
 			ItemBatchPeer.doInsert(criteria);
 			return true;
