@@ -1,100 +1,100 @@
-Sun Mar 21 16:07:34 CST 2010  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
-Sun Mar 21 16:07:34 CST 2010   [info] ************************************************************** 
-Sun Mar 21 16:07:34 CST 2010   [info] Starting Jakarta Velocity v1.3.1
-Sun Mar 21 16:07:34 CST 2010   [info] RuntimeInstance initializing.
-Sun Mar 21 16:07:34 CST 2010   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-Sun Mar 21 16:07:34 CST 2010   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
-Sun Mar 21 16:07:34 CST 2010   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
-Sun Mar 21 16:07:34 CST 2010   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
-Sun Mar 21 16:07:34 CST 2010   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010   [info] FileResourceLoader : initialization starting.
-Sun Mar 21 16:07:34 CST 2010   [info] FileResourceLoader : adding path 'X:\Workspace\projects\Winnu\templates'
-Sun Mar 21 16:07:34 CST 2010   [info] FileResourceLoader : initialization complete.
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
-Sun Mar 21 16:07:34 CST 2010   [info] Default ResourceManager initialization complete.
-Sun Mar 21 16:07:34 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-Sun Mar 21 16:07:34 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-Sun Mar 21 16:07:34 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-Sun Mar 21 16:07:34 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
-Sun Mar 21 16:07:34 CST 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-Sun Mar 21 16:07:34 CST 2010   [info] Created: 20 parsers.
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : initialization starting.
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
-Sun Mar 21 16:07:34 CST 2010  [error] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro :  VM library template macro registration complete.
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : messages on  : VM system will output logging messages
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
-Sun Mar 21 16:07:34 CST 2010   [info] Velocimacro : initialization complete.
-Sun Mar 21 16:07:34 CST 2010   [info] Velocity successfully started.
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Control.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010   [warn] org.apache.velocity.runtime.exception.ReferenceException: reference : template = om/Control.vm [line 5,column 20] : $dbprops.get("idMethod") is not a valid reference.
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found sql/base/mysql/db.props with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:34 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:34 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:34 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:34 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
-Sun Mar 21 16:07:34 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
-Sun Mar 21 16:07:35 CST 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
-Sun Mar 21 16:07:35 CST 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
-Sun Mar 21 16:07:35 CST 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:49 SGT 2010  [debug] AvalonLogSystem initialized using logfile 'velocity.log'
+Mon Mar 22 12:48:49 SGT 2010   [info] ************************************************************** 
+Mon Mar 22 12:48:49 SGT 2010   [info] Starting Jakarta Velocity v1.3.1
+Mon Mar 22 12:48:49 SGT 2010   [info] RuntimeInstance initializing.
+Mon Mar 22 12:48:49 SGT 2010   [info] Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+Mon Mar 22 12:48:49 SGT 2010   [info] Trying to use logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Mon Mar 22 12:48:49 SGT 2010   [info] Using logger class org.apache.velocity.runtime.log.AvalonLogSystem
+Mon Mar 22 12:48:49 SGT 2010   [info] Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+Mon Mar 22 12:48:49 SGT 2010   [info] Resource Loader Instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:49 SGT 2010   [info] FileResourceLoader : initialization starting.
+Mon Mar 22 12:48:49 SGT 2010   [info] FileResourceLoader : adding path 'D:\Documents and Settings\yasah\workspace\Winnu\templates'
+Mon Mar 22 12:48:49 SGT 2010   [info] FileResourceLoader : initialization complete.
+Mon Mar 22 12:48:49 SGT 2010   [info] ResourceCache : initialized. (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+Mon Mar 22 12:48:49 SGT 2010   [info] Default ResourceManager initialization complete.
+Mon Mar 22 12:48:49 SGT 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+Mon Mar 22 12:48:49 SGT 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+Mon Mar 22 12:48:49 SGT 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+Mon Mar 22 12:48:49 SGT 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Include
+Mon Mar 22 12:48:49 SGT 2010   [info] Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+Mon Mar 22 12:48:49 SGT 2010   [info] Created: 20 parsers.
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : initialization starting.
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : adding VMs from VM library template : VM_global_library.vm
+Mon Mar 22 12:48:49 SGT 2010  [error] ResourceManager : unable to find resource 'VM_global_library.vm' in any resource loader.
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : error using  VM library template VM_global_library.vm : org.apache.velocity.exception.ResourceNotFoundException: Unable to find resource 'VM_global_library.vm'
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro :  VM library template macro registration complete.
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : allowInline = true : VMs can be defined inline in templates
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : allowInlineLocal = false : VMs defined inline will be  global in scope if allowed.
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : messages on  : VM system will output logging messages
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : autoload off  : VM system will not automatically reload global library macros
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocimacro : initialization complete.
+Mon Mar 22 12:48:49 SGT 2010   [info] Velocity successfully started.
+Mon Mar 22 12:48:49 SGT 2010   [info] ResourceManager : found om/Control.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:49 SGT 2010   [warn] org.apache.velocity.runtime.exception.ReferenceException: reference : template = om/Control.vm [line 5,column 20] : $dbprops.get("idMethod") is not a valid reference.
+Mon Mar 22 12:48:49 SGT 2010   [info] ResourceManager : found sql/base/mysql/db.props with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Peer.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/MapBuilder.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] Error in evaluation of == expression. Both arguments must be of the same Class. Currently left = class java.lang.Boolean, right = class java.lang.String. om/MapBuilder.vm [line 28, column 28] (ASTEQNode)
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 112, column 103]
+Mon Mar 22 12:48:50 SGT 2010  [error] Left side ($dbprops.get("idMethod")) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. om/MapBuilder.vm [line 114, column 68]
+Mon Mar 22 12:48:50 SGT 2010   [info] ResourceManager : found om/Object.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 268, column 1]
+Mon Mar 22 12:48:50 SGT 2010  [error] RHS of #set statement is null. Context will not be modified. om/Object.vm [line 1411, column 1]
