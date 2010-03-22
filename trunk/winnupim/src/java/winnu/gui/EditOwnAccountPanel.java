@@ -18,6 +18,8 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
 	public void setControl(WinnuControl control){
         this.control = control;
     }
+	
+	
 
     private void initComponents() {
         lblUsername = new javax.swing.JLabel();
