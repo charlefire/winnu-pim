@@ -613,110 +613,114 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_SRDPbuttonActionPerformed
 
     private void AISbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AISbuttonActionPerformed
-        // TODO add your handling code here:
+  
     }//GEN-LAST:event_AISbuttonActionPerformed
 
     public void refreshReports() throws NumberFormatException, TorqueException{
-        Object[][] modelObject = ReportController.retrieveAvailableInventory();    
+        Object[][] modelObject;
         
-        //Available Inventory
+        
+        //AVAILABLE INVENTORY
+        modelObject= ReportController.retrieveAvailableInventory();    
         AITable.setEnabled(false);
         AITable.setModel(new javax.swing.table.DefaultTableModel(
             modelObject,
             new String [] {"Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"}
         ));
-        //===================//
         
         
-        Object[][] modelObject2 = ReportController.retrieveAvailableInventoryByGenericName();    
-        
-        //Available Inventory By GenericName
+        modelObject = ReportController.retrieveAvailableInventoryByGenericName();            
+        //AVAILABLE INVENTORY BY GENERIC NAME
         AIGNTable.setEnabled(false);
         AIGNTable.setModel(new javax.swing.table.DefaultTableModel(
-            modelObject2,
+        	modelObject,
             new String [] { 
             	"Item No.", "Item", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"            
             }
         ));
-        //===================//
         
-        Object[][] modelObject3 = ReportController.retrieveAvailableInventoryBySupplier();    
+        modelObject = ReportController.retrieveAvailableInventoryBySupplier();    
         
-        //Available Inventory By GenericName
+        //AVAILABLE INVENTORY BY SUPPLIER
         AISTable.setEnabled(false);
         AISTable.setModel(new javax.swing.table.DefaultTableModel(
-            modelObject3,
+        	modelObject,
             new String [] { 
             	"Item No.", "Item", "Generic Name", "Quantity", "Unit", "Unit Cost", "Value"            
             }
         ));
-        //===================//
         
-        Object[][] modelObject4 = ReportController.retrieveItemsForReorder();    
-        
+        // ITEMS FOR REORDER
+        modelObject = ReportController.retrieveItemsForReorder();    
         IRTable.setEnabled(false);
         IRTable.setModel(new javax.swing.table.DefaultTableModel(
-            modelObject4,
+        	modelObject,
             new String [] { 
             	"Item No.", "Item", "Generic Name", "Supplier", "Remaining Quantity", "Unit", "Unit Cost", "Value"            
             }
         ));
-        //===================//
         
-        Object[][] modelObject5 = ReportController.retrieveWithdrawnItem();    
-        
+
+        // DRUGS SOLD
+        modelObject = ReportController.retrieveSales();    
         DSTable.setEnabled(false);
         DSTable.setModel(new javax.swing.table.DefaultTableModel(
-            modelObject5,
+        	modelObject,
             new String [] { 
             		"Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Unit Cost", "Value"          
             }
         ));
-        //===================//
         
-
-        Object[][] modelObject6 = ReportController.retrieveSales();   
+        // SALES
+        modelObject = ReportController.retrieveSales();   
         STable.setModel(new javax.swing.table.DefaultTableModel(
-                modelObject6,
-                new String [] {
-                    "Date1", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
-                }
-            ));
-        
-        Object[][] modelObject7 = ReportController.retrieveSalesPerPatient(); 
-        SPTable.setModel(new javax.swing.table.DefaultTableModel(
-                modelObject7,
-                new String [] {
-                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Price", "Amount", "Remarks"
-                }
-            ));
-        
-        SRDDTable.setModel(new javax.swing.table.DefaultTableModel(
-               modelObject6,
+        		modelObject,
                 new String [] {
                     "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
                 }
             ));
         
-        Object[][] modelObject8 = ReportController.retrieveSRDP(); 
+        // SALES PER PATIENT
+        modelObject = ReportController.retrieveSalesPerPatient(); 
+        SPTable.setModel(new javax.swing.table.DefaultTableModel(
+        		modelObject,
+                new String [] {
+                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Price", "Amount", "Remarks"
+                }
+            ));
+        
+
+        // REGULATED DRUGS PER DOCTOR
+        modelObject = ReportController.retrieveSales();  
+        SRDDTable.setModel(new javax.swing.table.DefaultTableModel(
+        		modelObject,
+                new String [] {
+                    "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
+                }
+            ));
+
+        // REGULATED DRUGS PER PATIENT
+        modelObject = ReportController.retrieveSales();  
         SRDPTable.setModel(new javax.swing.table.DefaultTableModel(
-                modelObject8,
+        		modelObject,
                 new String [] {
                     "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Physician", "Quantity", "Unit", "Price", "Amount", "Remarks"
                 }
             ));
         
-        Object[][] modelObject9 = ReportController.retrieveDrugsPurchased(); 
+        // DRUGS PURCHASED
+        modelObject = ReportController.retrieveDrugsPurchased(); 
         DPTable.setModel(new javax.swing.table.DefaultTableModel(
-                modelObject9,
+        		modelObject,
                 new String [] {
                     "Date", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
                 }
             ));
-            
-        Object[][] modelObject10 = ReportController.retrieveDrugsExpiring(); 
+        
+        // DRUGS EXPIRING IN 3 MONTHS
+        modelObject = ReportController.retrieveDrugsExpiring(); 
         DETable.setModel(new javax.swing.table.DefaultTableModel(
-               modelObject10,
+        		modelObject,
                 new String [] {
                     "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
                 }
