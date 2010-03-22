@@ -197,7 +197,7 @@ public class EditUserPanel extends javax.swing.JPanel {
         	
         	 JOptionPane.showMessageDialog(null, selectedUser.getUsername() +  "'s information has been successfully updated.", "Edit Own Account", 1);
              
-             mainform.reloadMainMenu();
+             this.setVisible(false);
              
              control.setCurrentSelectedUser(null);
              txtFname.setText("");
