@@ -1,5 +1,6 @@
 package winnu.control;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.torque.TorqueException;
@@ -92,40 +93,35 @@ public class ReportController {
 	
 	public static Object[][] retrieveItemsForReorder(){
 		List<Item> list = ReportController.retrieveFromItem();
+		List<Item> filteredList = new ArrayList(); 
         Item item;
         StockedItem stockedItem;
         ItemBatch itemBatch;
+        
         int count=0;
-
         for(int i=0; i< list.size(); i++){
-        	item = list.get(i);
-        	
+        	item = list.get(i);        	
         	if(ItemPeer.getTotalQuantity(item.getBrandName()) < item.getMinimumSupplyLimit() ){
         		count++;
+        		filteredList.add(item);
         	}
         }           
         Object[][] modelObject = new Object[count][];         
         
-        count=0;
-        for(int i=0; i< list.size(); i++){
-        	item = list.get(i);
+        for(int i=0; i< filteredList.size(); i++){
+        	item = filteredList.get(i);
         	itemBatch = ItemBatchPeer.retrieveItemLatestBatch(item.getItemId(), item.getNextBatch());
         	stockedItem = StockedItemPeer.retrieveAllItemBatchId(itemBatch.getItemBatchId()).get(0);
         	
-        	if(ItemPeer.getTotalQuantity(item.getBrandName()) < item.getMinimumSupplyLimit() ){
-        		Object[] model = null;
+        	Object[] model = null;
         		
-				try {
-					model = new Object[]{item.getItemId(),item.getBrandName(), item.getGenericName(), itemBatch.getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(item.getBrandName()), "pcs", itemBatch.getAcquisitionCost(), stockedItem.getCurrentPrice()};
-				} catch (TorqueException e) {
-					e.printStackTrace();
-				}
+			try {
+				model = new Object[]{item.getItemId(),item.getBrandName(), item.getGenericName(), itemBatch.getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(item.getBrandName()), "pcs", itemBatch.getAcquisitionCost(), stockedItem.getCurrentPrice()};
+			} catch (TorqueException e) {
+				e.printStackTrace();
+			}
 				
-				modelObject[i]= model;
-				count++;
-        	}else{
-        		count--;        		
-        	}
+			modelObject[i]= model;
         }           
         
         return modelObject;        
@@ -233,7 +229,7 @@ public class ReportController {
         	
         	Object[] model = null;
 			try {
-				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getDoctor().getDoctorName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};			
+				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};			
 			} catch (TorqueException e) {
 				System.out.println("hay");
 				e.printStackTrace();
