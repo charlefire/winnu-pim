@@ -197,7 +197,7 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
         String address = txtAddress.getText();
         String contactNumber = txtContactNumber.getText();
         User currentUser = control.getCurrentUser();
-
+    
         if(txtPassword.getText().equals(txtConfirmPassword.getText())) {
             control.editAccountController.editAccount(currentUser.getUserId(), 
             		currentUser.getUsername(), txtPassword.getText(), 
@@ -216,7 +216,7 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
             txtPassword.setText("");
             txtConfirmPassword.setText("");
             
-            this.setVisible(false);
+            mainform.reloadMainMenu();
             
         } else {
             System.out.println("Passwords do not match.");

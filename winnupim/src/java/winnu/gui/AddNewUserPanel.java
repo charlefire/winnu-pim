@@ -329,7 +329,7 @@ public class AddNewUserPanel extends javax.swing.JPanel {
 	        	txtContactNumber.setText("");
 	        	cbxUserType.setSelectedIndex(0);
 	        	
-	        	this.setVisible(false);
+	        	mainform.reloadMainMenu();
             }else{
             	
             	JOptionPane.showMessageDialog(null, "The username " + txtUsername.getText() +  " already exists.", "Add New User", 1);
