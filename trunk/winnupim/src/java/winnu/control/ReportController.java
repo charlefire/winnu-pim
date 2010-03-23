@@ -45,12 +45,18 @@ public class ReportController {
         return modelObject;        
 	}
 	
-	public static Object[][] retrieveAvailableInventoryByGenericName(){
-		List<Item> list = ReportController.retrieveFromItem();
+	public static Object[][] retrieveAvailableInventoryByGenericName(String genericName){
+		List<Item> list;
         Item item;
         StockedItem stockedItem;
         ItemBatch itemBatch;
 
+        if(genericName=="" || genericName=="<Enter the Generic Name of the drug here>"){
+        	list = ItemPeer.retrieveAllItems();
+        }else{
+        	list = ItemPeer.retrieveAllGenericName(genericName);
+        }
+        
         Object[][] modelObject = new Object[list.size()][];         
         
         for(int i=0; i< list.size(); i++){
@@ -236,7 +242,6 @@ public class ReportController {
 			try {
 				model = new Object[]{item.getDateWithdrawn(),item.getSaleId(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getSellingPrice(), item.getReason()};			
 			} catch (TorqueException e) {
-				System.out.println("hay");
 				e.printStackTrace();
 			}
 			modelObject[i]= model;
@@ -263,8 +268,6 @@ public class ReportController {
 			try {
 				model = new Object[]{item.getItemBatch().getPurchasedDate(), itemBatch.getItemId(), itemName.getBrandName() , itemName.getGenericName(), itemBatch.getSupplier().getSupplierName(), item.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), item.getCurrentPrice()};			
 			} catch (TorqueException e) {
-				// TODO Auto-generated catch block
-				System.out.println("hay");
 				e.printStackTrace();
 			}
 			modelObject[i]= model;
@@ -275,27 +278,20 @@ public class ReportController {
 	
 	public static Object[][] retrieveDrugsExpiring(){
 		List<StockedItem> list = StockedItemPeer.retrieveAll();
+		List<StockedItem> filteredList = new ArrayList();
         StockedItem stockedItem;
-
-        int count=0;
 
         java.util.Date today = new java.util.Date();
     	long t = today.getTime();
-    	String dt = new java.sql.Date(t).toString();
-    	
+    	String dt = new java.sql.Date(t).toString();   	
     	
     	
         for(int i=0; i< list.size(); i++){
         	stockedItem = list.get(i);
-        	
-        	
         	try {
 				try {
 					if(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()) <= 3){
-						
-						count++;
-						System.out.println(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()));
-						
+						filteredList.add(stockedItem);
 					}
 				} catch (TorqueException e) {
 					e.printStackTrace();
@@ -306,36 +302,22 @@ public class ReportController {
 			
 			
         }           
-        Object[][] modelObject = new Object[count][];  
+        Object[][] modelObject = new Object[filteredList.size()][];  
                
-        count=0;
-        for(int i=0; i< list.size(); i++){
-        	stockedItem = list.get(i);
+        for(int i=0; i< filteredList.size(); i++){
+        	stockedItem = filteredList.get(i);
         	
         	try {
         		if(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()) <= 3){
         			Object[] model = null;
         			model = new Object[]{stockedItem.getItemBatch().getItemBatchId(),stockedItem.getItemBatch().getItem().getBrandName(), stockedItem.getItemBatch().getItem().getGenericName(), stockedItem.getItemBatch().getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(stockedItem.getItemBatch().getItem().getBrandName()), "pcs", stockedItem.getItemBatch().getAcquisitionCost(), stockedItem.getCurrentPrice()};
 					
-					System.out.println("dito");						
-						
-					modelObject[count]= model;
-					count++;
-				}
-				
-				else{
-					
-					System.out.println("bakit?");
-					System.out.println(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()));
-					System.out.println(dt);
-					System.out.println(stockedItem.getItemBatch().getExpirationDate());
-					//count--;
+					modelObject[i]= model;
+				}else{
 				}
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (TorqueException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

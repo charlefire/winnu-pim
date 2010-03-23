@@ -13,6 +13,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 	private WinnuControl control;
 	private MainForm mainform;
 	
+	private String selectedGenericName = "";
+	
     /** Creates new form SummaryReportsPanel */
     public SummaryReportsPanel(MainForm mainform) {
     	this.mainform = mainform;
@@ -33,8 +35,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         AIGNTable = new javax.swing.JTable();
         AIgenName = new javax.swing.JLabel();
-        AItextfield = new javax.swing.JTextField();
-        AIbutton = new javax.swing.JButton();
+        txtAvailableInventoryByGenericName = new javax.swing.JTextField();
+        btnAvailableInventoruByGenericName = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         DETable = new javax.swing.JTable();
@@ -89,7 +91,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         
-        // Report #1: Available Inventory
         AITable.setEnabled(false);
         AITable.setModel(new javax.swing.table.DefaultTableModel(
             null,
@@ -97,7 +98,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
             }
         ));
-        //*******************************/
         
         jScrollPane1.setViewportView(AITable);
 
@@ -124,10 +124,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         jTabbedPane1.addTab("Available Inventory ", jPanel1);
 
         AIGNTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-            	
-            },
-            
+            new Object [][] {            	
+            },            
             new String [] {
                 "Item No.", "Item", "Supplier", "Quantity", "Unit", "Unit Cost", "Value"
             }
@@ -136,12 +134,13 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         AIgenName.setText("Generic Name: ");
 
-        AItextfield.setText("jTextField2");
+        //TODO: AVAILABBLE INVENTORY BY GENERIC NAME
+        txtAvailableInventoryByGenericName.setText("<Enter the Generic Name Here>");
 
-        AIbutton.setText("Go!");
-        AIbutton.addActionListener(new java.awt.event.ActionListener() {
+        btnAvailableInventoruByGenericName.setText("Go!");
+        btnAvailableInventoruByGenericName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AIbuttonActionPerformed(evt);
+                availableInventoruByGnameButtonActionPerformed(evt);
             }
         });
         
@@ -162,9 +161,9 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(AIgenName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(AItextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAvailableInventoryByGenericName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(AIbutton))
+                        .addComponent(btnAvailableInventoruByGenericName))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(1930, Short.MAX_VALUE))
         );
@@ -174,8 +173,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AIgenName)
-                    .addComponent(AItextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AIbutton))
+                    .addComponent(txtAvailableInventoryByGenericName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAvailableInventoruByGenericName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -570,29 +569,31 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     
     }
 
-    private void AIbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AIbuttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AIbuttonActionPerformed
+    private void availableInventoruByGnameButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	this.selectedGenericName = txtAvailableInventoryByGenericName.getText();
+    	try {
+			refreshReports();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (TorqueException e) {
+			e.printStackTrace();
+		}    	
+		
+    }
+    private void SPbuttonActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+    private void SRDDbuttonActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void SPbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SPbuttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SPbuttonActionPerformed
+    private void SRDPbuttonActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void SRDDbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SRDDbuttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SRDDbuttonActionPerformed
-
-    private void SRDPbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SRDPbuttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SRDPbuttonActionPerformed
-
-    private void AISbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AISbuttonActionPerformed
+    private void AISbuttonActionPerformed(java.awt.event.ActionEvent evt) {
   
-    }//GEN-LAST:event_AISbuttonActionPerformed
+    }
 
     public void refreshReports() throws NumberFormatException, TorqueException{
-        Object[][] modelObject;
-        
+        Object[][] modelObject;        
         
         //AVAILABLE INVENTORY
         modelObject= ReportController.retrieveAvailableInventory();    
@@ -603,7 +604,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         ));
         
         
-        modelObject = ReportController.retrieveAvailableInventoryByGenericName();            
+        modelObject = ReportController.retrieveAvailableInventoryByGenericName(this.selectedGenericName);            
         //AVAILABLE INVENTORY BY GENERIC NAME
         AIGNTable.setEnabled(false);
         AIGNTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -713,9 +714,9 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel AISsupplier;
     private javax.swing.JTextField AIStextfield;
     private javax.swing.JTable AITable;
-    private javax.swing.JButton AIbutton;
+    private javax.swing.JButton btnAvailableInventoruByGenericName;
     private javax.swing.JLabel AIgenName;
-    private javax.swing.JTextField AItextfield;
+    private javax.swing.JTextField txtAvailableInventoryByGenericName;
     private javax.swing.JTable DETable;
     private javax.swing.JTable DPTable;
     private javax.swing.JTable DSTable;

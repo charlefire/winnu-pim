@@ -257,9 +257,10 @@ public class ExecuteSalePanel extends javax.swing.JPanel {
     }
     
     private void btnOverrideSaleActionPerformed(java.awt.event.ActionEvent evt) {
-		overrideSaleForm = new OverrideSaleForm(control, this, lstSelectedItems.getSelectedValue().toString(), lstSelectedItems.getSelectedIndex());
-		
-		overrideSaleForm.getAdminInfo();
+		if(lstSelectedItems.getSelectedIndex()!=-1){	;
+    		overrideSaleForm = new OverrideSaleForm(control, this, lstSelectedItems.getSelectedValue().toString(), lstSelectedItems.getSelectedIndex());
+			overrideSaleForm.getAdminInfo();
+		}
     }
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
