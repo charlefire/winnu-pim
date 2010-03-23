@@ -50,7 +50,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         DSTable = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        EDDDdTable = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         jPanel11 = new javax.swing.JPanel();
@@ -273,33 +272,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Drugs Sold ", jPanel8);
 
-        EDDDdTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+       
 
-            },
-            new String [] {
-                "Date", "Ref No.", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Unit Cost", "Value", "Reason", "Mode", "Remarks"
-            }
-        ));
-        jScrollPane10.setViewportView(EDDDdTable);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1930, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane1.addTab("Expired/Damaged Drugs Disposed ", jPanel9);
 
        
 
@@ -745,7 +719,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     private javax.swing.JTable DETable;
     private javax.swing.JTable DPTable;
     private javax.swing.JTable DSTable;
-    private javax.swing.JTable EDDDdTable;
     private javax.swing.JTable IRTable;
     private javax.swing.JTable SPTable;
     private javax.swing.JButton SPbutton;
