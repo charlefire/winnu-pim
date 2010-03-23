@@ -117,9 +117,24 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 	
 	//retrieve using doctor id
 	@SuppressWarnings("unchecked")
-	public static List<WithdrawnItem> retrieveAllDoctorId(String query){
+	public static List<WithdrawnItem> retrieveAllDoctorId(int query){
 		Criteria criteria = new Criteria();
 		criteria.add(WithdrawnItemPeer.DOCTORID, query);
+		try{
+			return (List<WithdrawnItem>)WithdrawnItemPeer.doSelect(criteria);
+		}catch(Exception e){
+			e.printStackTrace();
+			return new ArrayList<WithdrawnItem>();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<WithdrawnItem> retrieveAllRegulatedUsingDoctorId(int doctorId){
+		Criteria criteria = new Criteria();
+		criteria.add(WithdrawnItemPeer.DOCTORID, doctorId);
+		criteria.add(WithdrawnItemPeer.ITEMBATCHID,ItemBatchPeer.ITEMBATCHID);
+		criteria.add(ItemBatchPeer.ITEMID,ItemPeer.ITEMID);
+		
 		try{
 			return (List<WithdrawnItem>)WithdrawnItemPeer.doSelect(criteria);
 		}catch(Exception e){

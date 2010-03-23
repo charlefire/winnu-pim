@@ -14,6 +14,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 	private MainForm mainform;
 	
 	private String selectedGenericName = "";
+	private String selectedDoctor = "";
 	
     /** Creates new form SummaryReportsPanel */
     public SummaryReportsPanel(MainForm mainform) {
@@ -70,7 +71,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         jScrollPane15 = new javax.swing.JScrollPane();
         SRDDTable = new javax.swing.JTable();
         SRDDdoctor = new javax.swing.JLabel();
-        SRDDtextfield = new javax.swing.JTextField();
+        txtSalesOfRegulatedDrugsPerDoctor = new javax.swing.JTextField();
         SRDDbutton = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
@@ -134,9 +135,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         AIgenName.setText("Generic Name: ");
 
-        //TODO: AVAILABBLE INVENTORY BY GENERIC NAME
         txtAvailableInventoryByGenericName.setText("<Enter the Generic Name Here>");
-
         btnAvailableInventoruByGenericName.setText("Go!");
         btnAvailableInventoruByGenericName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +179,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("Available Inventory by Generic Name ", jPanel3);
-
         DETable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -306,7 +304,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         STable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
             },
             new String [] {
                 "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Patient", "Quantity", "Unit", "Price", "Amount", "Remarks"
@@ -334,7 +331,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         SPTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
             },
             new String [] {
                 "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Quantity", "Unit", "Price", "Amount", "Remarks"
@@ -395,7 +391,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         SRDDdoctor.setText("Doctor:");
 
-        SRDDtextfield.setText("jTextField2");
+        txtSalesOfRegulatedDrugsPerDoctor.setText("<Enter Name of Doctor Here>");
 
         SRDDbutton.setText("Go!");
         SRDDbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -415,7 +411,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(SRDDdoctor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SRDDtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSalesOfRegulatedDrugsPerDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(SRDDbutton)))
                 .addContainerGap(1686, Short.MAX_VALUE))
@@ -426,7 +422,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SRDDdoctor)
-                    .addComponent(SRDDtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSalesOfRegulatedDrugsPerDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SRDDbutton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -436,7 +432,6 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         SRDPTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
             },
             new String [] {
                 "Date", "OR No.", "Item No.", "Item", "Generic Name", "Supplier", "Physician", "Quantity", "Unit", "Price", "Amount", "Remarks"
@@ -582,7 +577,16 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     }
     private void SPbuttonActionPerformed(java.awt.event.ActionEvent evt) {
     }
+    
     private void SRDDbuttonActionPerformed(java.awt.event.ActionEvent evt) {
+    	selectedDoctor = txtSalesOfRegulatedDrugsPerDoctor.getText();
+    	try {
+			this.refreshReports();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (TorqueException e) {
+			e.printStackTrace();
+		}
     }
 
     private void SRDPbuttonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -666,7 +670,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         
 
         // REGULATED DRUGS PER DOCTOR
-        modelObject = ReportController.retrieveSales();  
+        modelObject = ReportController.retrieveSalesOfRegulatedDrugsPerDoctor(selectedDoctor);  
         SRDDTable.setModel(new javax.swing.table.DefaultTableModel(
         		modelObject,
                 new String [] {
@@ -728,7 +732,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     private javax.swing.JTable SRDDTable;
     private javax.swing.JButton SRDDbutton;
     private javax.swing.JLabel SRDDdoctor;
-    private javax.swing.JTextField SRDDtextfield;
+    private javax.swing.JTextField txtSalesOfRegulatedDrugsPerDoctor;
     private javax.swing.JTable SRDPTable;
     private javax.swing.JButton SRDPbutton;
     private javax.swing.JLabel SRDPpatient;
