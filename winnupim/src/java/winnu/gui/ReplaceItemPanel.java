@@ -175,8 +175,8 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     	if(selectedIndex >= 0) {
     		if(!quantity.equals("")) {
 	    		if(control.replaceItemController.replaceItem(selectedIndex, Integer.parseInt(txtQuantity.getText()), rbtnDamaged.isSelected() ? rbtnDamaged.getText() : rbtnExpired.getText())) {
-		    		JOptionPane.showMessageDialog(null, "Replacement of " + txtQuantity.getText() + " pcs of "
-	    				+ control.getCurrentSelectedItem().getBrandName() + " successful.", "Replacement of Item", JOptionPane.INFORMATION_MESSAGE);
+		    		JOptionPane.showMessageDialog(null, txtQuantity.getText() + " pcs of "
+	    				+ control.getCurrentSelectedItem().getBrandName() + " replacement successful.", "Replacement of Item", JOptionPane.INFORMATION_MESSAGE);
 	    		}
 	    		else
 	    			JOptionPane.showMessageDialog(null, "Quantity more/less than limit. Re-check input quantity.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
@@ -187,10 +187,7 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     		}
     	}
     	else {
-    		if(!quantity.equals(""))
-    			JOptionPane.showMessageDialog(null, "Select an Item first.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
-    		else
-    			JOptionPane.showMessageDialog(null, "Select an Item first.\nInput quantity." , "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
+    		JOptionPane.showMessageDialog(null, "Select an Item first.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
     	}
     	
     	updateView();
