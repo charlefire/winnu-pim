@@ -125,7 +125,7 @@ public class OverrideSaleForm extends javax.swing.JFrame {
 	public void getAdminInfo() {
 		if(control.getCurrentUser().getType().toUpperCase().equals("ADMIN")) {
 			confirmOverrideSale();
-			parent.updateItemList();
+			this.parent.updateItemList();
 		}
 		else {
 			this.setLocation(500, 250);
@@ -135,13 +135,11 @@ public class OverrideSaleForm extends javax.swing.JFrame {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
-		if(control.overrideSaleController.authenticateUser(txtUsername.getText(), txtPassword.getText())){
+		if(control.overrideSaleController.authenticateUser(txtUsername.getText(), txtPassword.getPassword().toString())){
             confirmOverrideSale();
-    		parent.updateItemList();
+    		this.parent.updateItemList();
 			control.overrideSaleController.displaySuccessMessage(this.item);
-			this.setVisible(false);
     	}
 		else{
     		txtPassword.setText("");
@@ -151,7 +149,6 @@ public class OverrideSaleForm extends javax.swing.JFrame {
 	private void confirmOverrideSale() {
 		if(control.overrideSaleController.displaySaleInfo(this.item)) {
 			control.overrideSaleController.overrideSale(this.index);
-			control.overrideSaleController.displaySuccessMessage(this.item);
 		}
 	}
 	
