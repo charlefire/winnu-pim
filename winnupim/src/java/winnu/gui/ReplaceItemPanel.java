@@ -167,33 +167,24 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     }
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
-    	lstResults.setSelectedIndex(-1);
-    	
     	int selectedIndex = lstResults.getSelectedIndex();
     	String quantity = txtQuantity.getText();
     	
     	if(selectedIndex >= 0) {
     		if(!quantity.equals("")) {
-	    		if(control.replaceItemController.replaceItem(selectedIndex, Integer.parseInt(txtQuantity.getText()), rbtnDamaged.isSelected() ? rbtnDamaged.getText() : rbtnExpired.getText())) {
-		    		JOptionPane.showMessageDialog(null, "Replacement of " + txtQuantity.getText() + " pcs of "
-	    				+ control.getCurrentSelectedItem().getBrandName() + " successful.", "Replacement of Item", JOptionPane.INFORMATION_MESSAGE);
-	    		}
+	    		if(control.replaceItemController.replaceItem(selectedIndex, Integer.parseInt(txtQuantity.getText()), rbtnDamaged.isSelected() ? rbtnDamaged.getText() : rbtnExpired.getText()))
+		    		JOptionPane.showMessageDialog(null, txtQuantity.getText() + " unit/s of " + lblBrandName.getText() + " replacement successful.", "Replacement of Item", JOptionPane.INFORMATION_MESSAGE);
 	    		else
 	    			JOptionPane.showMessageDialog(null, "Quantity more/less than limit. Re-check input quantity.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
 
     		}
-    		else {
-    			JOptionPane.showMessageDialog(null, "Type in Quantity.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
-    		}
-    	}
-    	else {
-    		if(!quantity.equals(""))
-    			JOptionPane.showMessageDialog(null, "Select an Item first.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
     		else
-    			JOptionPane.showMessageDialog(null, "Select an Item first.\nInput quantity." , "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
+    			JOptionPane.showMessageDialog(null, "Type in Quantity.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
     	}
+    	else
+    		JOptionPane.showMessageDialog(null, "Select an Item first.", "ERROR: Replace Item", JOptionPane.ERROR_MESSAGE);
     	
-    	updateView();
+    	updateView(selectedIndex);
     }
     
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +194,6 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     	btnSearchItem.setText("Select Item");
     	spaneSale.setViewport(null);
     	mainform.reloadMainMenu();
-    	this.setVisible(false);
     }
 
     private void btnSearchItemActionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,12 +204,12 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
         
         searchItemFrame.addWindowListener(new java.awt.event.WindowAdapter(){
         	public void windowClosed(java.awt.event.WindowEvent e){
-        		updateView();
+        		updateView(0);
         	}        	
         });
     }
     
-    private void updateView(){
+    private void updateView(int index){
     	DefaultListModel items;
 		
     	if(!control.getCurrentSelectedItem().equals(null)){
@@ -227,14 +217,14 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
 			lblBrandName.setText(control.getCurrentSelectedItem().getBrandName());
 			btnSearchItem.setText("Change Item");
 			
-			items = control.replaceItemController.getWithdrawnItems(control.getCurrentSelectedItem().getBrandName());
-			
-	    	lstResults.setModel(items);
+			if(!(items = control.replaceItemController.getWithdrawnItems(
+					control.getCurrentSelectedItem().getBrandName())).equals(null)) {
+		    	lstResults.setModel(items);
+		    	lstResults.setSelectedIndex(index);
+			}
     	}
-    	else {
+    	else
     		JOptionPane.showMessageDialog(null, "Please select an item.", "Select Item", JOptionPane.WARNING_MESSAGE);
-    	}
-    	
 	}
 
     private javax.swing.JButton btnConfirm;
