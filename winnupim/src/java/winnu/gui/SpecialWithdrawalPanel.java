@@ -172,36 +172,20 @@ public class SpecialWithdrawalPanel extends javax.swing.JPanel {
 
 	private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
 		String brandName = lblBrandName2.getText();
-		int quantity = -1;
-		
-		try {
-			quantity = Integer.parseInt(txtQuantity.getText());
-		}
-		catch(NumberFormatException e) {
-			//e.printStackTrace();
-		}
-		
-		int selectedIndex = lstResults.getSelectedIndex();
+		int quantity = Integer.parseInt(txtQuantity.getText());
+		int index = lstResults.getSelectedIndex();
 		String reason = rbtnItemDisposal.isSelected() ? "Disposal": (rbtnItemReturn.isSelected() ? "Return" : (rbtnItemFree.isSelected() ? "Free" : "NULL"));
 		
-		if(selectedIndex >= 0) {
-			if(!txtQuantity.equals("") && quantity > 0 && !Integer.toString(quantity).equals(null) && !reason.equals("NULL")) {	
-				if(control.specialWithdrawalController.withdrawItem(brandName, selectedIndex, quantity, reason)){
-					JOptionPane.showMessageDialog(null, txtQuantity.getText() + " " + lblBrandName2.getText() +  " has been successfully withdrawn.", "Special Withdrawal", JOptionPane.INFORMATION_MESSAGE);
-					
-					updateView();
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Quantity exceeds minimum supply limit. Please re-check.", "ERROR: Special Withdrawal", JOptionPane.ERROR_MESSAGE);
-				}
+		if(quantity != 0 && !Integer.toString(quantity).equals(null) && !reason.equals("NULL")) {	
+			if(control.specialWithdrawalController.withdrawItem(brandName, index, quantity, reason)){
+				JOptionPane.showMessageDialog(null, txtQuantity.getText() + " " + lblBrandName2.getText() +  " has been successfully withdrawn.", "Special Withdrawal", JOptionPane.INFORMATION_MESSAGE);
+				
+				updateView();
 			}
 			else {
-    			JOptionPane.showMessageDialog(null, "Type in Quantity.", "ERROR: Special Withdrawal", JOptionPane.ERROR_MESSAGE);
-    		}
+				JOptionPane.showMessageDialog(null, "Quantity exceeds minimum supply limit. Please re-check.", "ERROR: Special Withdrawal", JOptionPane.ERROR_MESSAGE);
+			}
 		}
-		else {
-    		JOptionPane.showMessageDialog(null, "Select an Item first.", "ERROR: Special Withdrawal", JOptionPane.ERROR_MESSAGE);
-    	}
 	}
 
 	private void btnSelectItemActionPerformed(java.awt.event.ActionEvent evt) {
