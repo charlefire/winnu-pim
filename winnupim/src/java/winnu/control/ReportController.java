@@ -93,35 +93,40 @@ public class ReportController {
 	
 	public static Object[][] retrieveItemsForReorder(){
 		List<Item> list = ReportController.retrieveFromItem();
-		List<Item> filteredList = new ArrayList(); 
         Item item;
         StockedItem stockedItem;
         ItemBatch itemBatch;
-        
         int count=0;
+
         for(int i=0; i< list.size(); i++){
-        	item = list.get(i);        	
+        	item = list.get(i);
+        	
         	if(ItemPeer.getTotalQuantity(item.getBrandName()) < item.getMinimumSupplyLimit() ){
         		count++;
-        		filteredList.add(item);
         	}
         }           
         Object[][] modelObject = new Object[count][];         
         
-        for(int i=0; i< filteredList.size(); i++){
-        	item = filteredList.get(i);
+        count=0;
+        for(int i=0; i< list.size(); i++){
+        	item = list.get(i);
         	itemBatch = ItemBatchPeer.retrieveItemLatestBatch(item.getItemId(), item.getNextBatch());
         	stockedItem = StockedItemPeer.retrieveAllItemBatchId(itemBatch.getItemBatchId()).get(0);
         	
-        	Object[] model = null;
+        	if(ItemPeer.getTotalQuantity(item.getBrandName()) < item.getMinimumSupplyLimit() ){
+        		Object[] model = null;
         		
-			try {
-				model = new Object[]{item.getItemId(),item.getBrandName(), item.getGenericName(), itemBatch.getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(item.getBrandName()), "pcs", itemBatch.getAcquisitionCost(), stockedItem.getCurrentPrice()};
-			} catch (TorqueException e) {
-				e.printStackTrace();
-			}
+				try {
+					model = new Object[]{item.getItemId(),item.getBrandName(), item.getGenericName(), itemBatch.getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(item.getBrandName()), "pcs", itemBatch.getAcquisitionCost(), stockedItem.getCurrentPrice()};
+				} catch (TorqueException e) {
+					e.printStackTrace();
+				}
 				
-			modelObject[i]= model;
+				modelObject[count]= model;
+				count++;
+        	}else{
+        		
+        	}
         }           
         
         return modelObject;        
@@ -278,12 +283,19 @@ public class ReportController {
     	long t = today.getTime();
     	String dt = new java.sql.Date(t).toString();
     	
+    	
+    	
         for(int i=0; i< list.size(); i++){
         	stockedItem = list.get(i);
+        	
+        	
         	try {
 				try {
 					if(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()) <= 3){
+						
 						count++;
+						System.out.println(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()));
+						
 					}
 				} catch (TorqueException e) {
 					e.printStackTrace();
@@ -291,27 +303,33 @@ public class ReportController {
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
+			
+			
         }           
-        
-        Object[][] modelObject = new Object[count][];         
-        
-        for(int i=0; i< count; i++){
+        Object[][] modelObject = new Object[count][];  
+               
+        count=0;
+        for(int i=0; i< list.size(); i++){
         	stockedItem = list.get(i);
-        	        	
+        	
         	try {
         		if(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()) <= 3){
-						try {
-							Object model[] = new Object[]{stockedItem.getItemBatch().getItemBatchId(),stockedItem.getItemBatch().getItem().getBrandName(), stockedItem.getItemBatch().getItem().getGenericName(), stockedItem.getItemBatch().getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(stockedItem.getItemBatch().getItem().getBrandName()), "pcs", stockedItem.getItemBatch().getAcquisitionCost(), stockedItem.getCurrentPrice()};
-							modelObject[i]= model;
-						} catch (TorqueException e) {
-							e.printStackTrace();
-						}
+        			Object[] model = null;
+        			model = new Object[]{stockedItem.getItemBatch().getItemBatchId(),stockedItem.getItemBatch().getItem().getBrandName(), stockedItem.getItemBatch().getItem().getGenericName(), stockedItem.getItemBatch().getSupplier().getSupplierName(), ItemPeer.getTotalQuantity(stockedItem.getItemBatch().getItem().getBrandName()), "pcs", stockedItem.getItemBatch().getAcquisitionCost(), stockedItem.getCurrentPrice()};
+					
+					System.out.println("dito");						
 						
+					modelObject[count]= model;
+					count++;
 				}
 				
 				else{
-					count--;
 					
+					System.out.println("bakit?");
+					System.out.println(getDateDifference(dt, stockedItem.getItemBatch().getExpirationDate()));
+					System.out.println(dt);
+					System.out.println(stockedItem.getItemBatch().getExpirationDate());
+					//count--;
 				}
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
@@ -320,6 +338,7 @@ public class ReportController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
         }           
         
         return modelObject;        
@@ -365,11 +384,7 @@ public class ReportController {
 			//greater than
 			//ignore
 			return 4;
-		}
-		
-		
-		
-		
+		}	
 		
 	}
 	
