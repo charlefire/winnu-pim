@@ -33,7 +33,7 @@ public class SpecialWithdrawalPanel extends javax.swing.JPanel {
         spaneResults = new javax.swing.JScrollPane();
         lstResults = new javax.swing.JList();
         lblQuantity = new javax.swing.JLabel();
-        txtQuantity = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JFormattedTextField();
         lblReason = new javax.swing.JLabel();
         rbtnItemDisposal = new javax.swing.JRadioButton();
         rbtnItemReturn = new javax.swing.JRadioButton();
@@ -253,7 +253,7 @@ public class SpecialWithdrawalPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JScrollPane spaneResults;
     private javax.swing.JList lstResults;
-    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JFormattedTextField txtQuantity;
     private javax.swing.ButtonGroup rbtnGroup;
     private javax.swing.JRadioButton rbtnItemDisposal;
     private javax.swing.JRadioButton rbtnItemReturn;

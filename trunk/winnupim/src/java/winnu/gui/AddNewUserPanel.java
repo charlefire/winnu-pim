@@ -33,7 +33,7 @@ public class AddNewUserPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtConfirmPassword = new javax.swing.JPasswordField();
-        txtContactNumber = new javax.swing.JTextField();
+        txtContactNumber = new javax.swing.JFormattedTextField();
         txtAddress = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -388,7 +388,7 @@ public class AddNewUserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JPasswordField txtConfirmPassword;
-    private javax.swing.JTextField txtContactNumber;
+    private javax.swing.JFormattedTextField txtContactNumber;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtMiddleName;

@@ -21,11 +21,11 @@ public class AddSupplyPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel9 = new javax.swing.JLabel();
-        txtQuantity = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         btnAccept = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        txtAcquisitionCost = new javax.swing.JTextField();
+        txtAcquisitionCost = new javax.swing.JFormattedTextField(java.text.DecimalFormat.getNumberInstance());
         cboMonth = new javax.swing.JComboBox();
         cboDay = new javax.swing.JComboBox();
         cboYear = new javax.swing.JComboBox();
@@ -264,8 +264,8 @@ public class AddSupplyPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtAcquisitionCost;
-    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JFormattedTextField txtAcquisitionCost;
+    private javax.swing.JFormattedTextField txtQuantity;
     private javax.swing.JTextField txtSupplier;
     // End of variables declaration//GEN-END:variables
 

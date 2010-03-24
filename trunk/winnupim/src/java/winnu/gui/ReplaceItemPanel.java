@@ -21,7 +21,7 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
         lblReplaceItem = new javax.swing.JLabel();
         lblItemName = new javax.swing.JLabel();
         lblItemQuantity = new javax.swing.JLabel();
-        txtQuantity = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JFormattedTextField();
         lblReason = new javax.swing.JLabel();
         lblItemName1 = new javax.swing.JLabel();
         lblBrandName = new javax.swing.JLabel();
@@ -243,5 +243,5 @@ public class ReplaceItemPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup rbtnGroup;
     private javax.swing.JRadioButton rbtnDamaged;
     private javax.swing.JRadioButton rbtnExpired;
-    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JFormattedTextField txtQuantity;
 }

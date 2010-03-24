@@ -45,9 +45,9 @@ public class AddItemPanel extends javax.swing.JPanel {
         btnCapsule = new javax.swing.JRadioButton();
         txtOtherType = new javax.swing.JTextField();
         btnOtherType = new javax.swing.JRadioButton();
-        txtInitialQuantity = new javax.swing.JTextField();
-        txtSellingPrice = new javax.swing.JTextField();
-        txtAcquisitionCost = new javax.swing.JTextField();
+        txtInitialQuantity = new javax.swing.JFormattedTextField();
+        txtSellingPrice = new javax.swing.JFormattedTextField();
+        txtAcquisitionCost = new javax.swing.JFormattedTextField();
         btnSubmit = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
@@ -58,7 +58,7 @@ public class AddItemPanel extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         txtSupplierContactNo = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtMinimumSupplyLimit = new javax.swing.JTextField();
+        txtMinimumSupplyLimit = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
 
         buttonGroup1.add(btnRegulated);
@@ -554,13 +554,13 @@ public class AddItemPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtAcquisitionCost;
+    private javax.swing.JFormattedTextField txtAcquisitionCost;
     private javax.swing.JTextField txtBrandName;
     private javax.swing.JTextField txtGenericName;
-    private javax.swing.JTextField txtInitialQuantity;
-    private javax.swing.JTextField txtMinimumSupplyLimit;
+    private javax.swing.JFormattedTextField txtInitialQuantity;
+    private javax.swing.JFormattedTextField txtMinimumSupplyLimit;
     private javax.swing.JTextField txtOtherType;
-    private javax.swing.JTextField txtSellingPrice;
+    private javax.swing.JFormattedTextField txtSellingPrice;
     private javax.swing.JTextField txtSupplierAddress;
     private javax.swing.JTextField txtSupplierContactNo;
     private javax.swing.JTextField txtSupplierName;
