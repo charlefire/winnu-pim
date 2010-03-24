@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.torque.TorqueException;
 import org.apache.torque.util.Criteria;
 
 /**
@@ -271,6 +272,65 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 			e.printStackTrace();
 			return new ArrayList<WithdrawnItem>();
 		}
+	}
+
+
+	public static List<WithdrawnItem> retrieveAllRegulatedDrugWithPatientName(String patientName) {
+//		List<WithdrawnItem> withdrawnItem = new ArrayList<WithdrawnItem>();
+//		List<WithdrawnItem> filteredWithdrawnItem = new ArrayList<WithdrawnItem>(); 
+//		List<Sale> sale = new ArrayList<Sale>();
+		
+		Criteria criteria = new Criteria();
+		
+//		criteria.add(SalePeer.CUSTOMERNAME,patientName);
+//		try {
+//			sale = (List<Sale>)SalePeer.doSelect(criteria);
+//		} catch (TorqueException e1) {
+//			sale = new ArrayList<Sale>();
+//		}
+//		
+//		for(int i=0;i<sale.size();i++){
+//			criteria = new Criteria();
+//			criteria.add(WithdrawnItemPeer.SALEID,sale.get(i).getSaleId());
+//			criteria.add(WithdrawnItemPeer.ITEMBATCHID,ItemBatchPeer.ITEMBATCHID);
+//			criteria.add(ItemBatchPeer.ITEMID,ItemPeer.ITEMID);
+//			
+//			try {
+//				withdrawnItem = (List<WithdrawnItem>)WithdrawnItemPeer.doSelect(criteria);
+//			} catch (TorqueException e) {
+//				withdrawnItem = new ArrayList<WithdrawnItem>();
+//			}
+//			
+//			for(int j=0;j<withdrawnItem.size();j++){
+//				
+//			}
+//			
+//		}
+
+		try{
+			return (List<WithdrawnItem>)WithdrawnItemPeer.doSelect(criteria);
+		}catch(Exception e){
+			e.printStackTrace();
+			return new ArrayList<WithdrawnItem>();
+		}
+		
+	}
+
+
+	public static List<WithdrawnItem> retrieveSoldItemsPerPatient(String patientName) {
+		Criteria criteria = new Criteria();
+		criteria.add(WithdrawnItemPeer.REASON, "Sale");
+		criteria.add(WithdrawnItemPeer.SALEID,SalePeer.SALEID);
+		criteria.add(SalePeer.CUSTOMERNAME, patientName);
+		
+		System.out.println(patientName);
+		try{
+			return (List<WithdrawnItem>)WithdrawnItemPeer.doSelect(criteria);
+		}catch(Exception e){
+			e.printStackTrace();
+			return new ArrayList<WithdrawnItem>();
+		}
+		
 	}
 	
 }
