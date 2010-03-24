@@ -15,6 +15,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 	
 	private String selectedGenericName = "";
 	private String selectedDoctor = "";
+	private String selectedPatientRegulatedDrugs = "";
+	private String selectedPatient = "";
 	
     /** Creates new form SummaryReportsPanel */
     public SummaryReportsPanel(MainForm mainform) {
@@ -65,8 +67,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         jScrollPane14 = new javax.swing.JScrollPane();
         SPTable = new javax.swing.JTable();
         SPpatient = new javax.swing.JLabel();
-        SPtextfield = new javax.swing.JTextField();
-        SPbutton = new javax.swing.JButton();
+        txtSalePerPatient = new javax.swing.JTextField();
+        btnSalePerPatient = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
         SRDDTable = new javax.swing.JTable();
@@ -77,7 +79,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         jScrollPane16 = new javax.swing.JScrollPane();
         SRDPTable = new javax.swing.JTable();
         SRDPpatient = new javax.swing.JLabel();
-        SRDPtextfield = new javax.swing.JTextField();
+        txtSalesOfRegulatedDrugsByPatient = new javax.swing.JTextField();
         SRDPbutton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -134,7 +136,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(AIGNTable);
 
         AIgenName.setText("Generic Name: ");
-
+        
         txtAvailableInventoryByGenericName.setText("<Enter the Generic Name Here>");
         btnAvailableInventoruByGenericName.setText("Go!");
         btnAvailableInventoruByGenericName.addActionListener(new java.awt.event.ActionListener() {
@@ -267,12 +269,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Drugs Sold ", jPanel8);
-
-       
-
-
-       
+        jTabbedPane1.addTab("Drugs Sold ", jPanel8);       
 
         IRTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -340,10 +337,10 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         SPpatient.setText("Patient:");
 
-        SPtextfield.setText("jTextField2");
+        txtSalePerPatient.setText("<Enter Name of Patient Here>");
 
-        SPbutton.setText("Go!");
-        SPbutton.addActionListener(new java.awt.event.ActionListener() {
+        btnSalePerPatient.setText("Go!");
+        btnSalePerPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SPbuttonActionPerformed(evt);
             }
@@ -360,9 +357,9 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(SPpatient)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SPtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSalePerPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(SPbutton)))
+                        .addComponent(btnSalePerPatient)))
                 .addContainerGap(1686, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
@@ -371,8 +368,8 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SPpatient)
-                    .addComponent(SPtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SPbutton))
+                    .addComponent(txtSalePerPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalePerPatient))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -441,7 +438,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 
         SRDPpatient.setText("Patient:");
 
-        SRDPtextfield.setText("jTextField2");
+        txtSalesOfRegulatedDrugsByPatient.setText("<Enter name of Patient Here>");
 
         SRDPbutton.setText("Go!");
         SRDPbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -461,7 +458,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(SRDPpatient)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SRDPtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSalesOfRegulatedDrugsByPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(SRDPbutton)))
                 .addContainerGap(1686, Short.MAX_VALUE))
@@ -472,7 +469,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SRDPpatient)
-                    .addComponent(SRDPtextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSalesOfRegulatedDrugsByPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SRDPbutton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -576,6 +573,14 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
 		
     }
     private void SPbuttonActionPerformed(java.awt.event.ActionEvent evt) {
+    	selectedPatient = txtSalePerPatient.getText();
+    	try {
+			this.refreshReports();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (TorqueException e) {
+			e.printStackTrace();
+		}
     }
     
     private void SRDDbuttonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -590,6 +595,15 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     }
 
     private void SRDPbuttonActionPerformed(java.awt.event.ActionEvent evt) {
+    	selectedPatientRegulatedDrugs = txtSalesOfRegulatedDrugsByPatient.getText();
+    	
+    	try {
+			this.refreshReports();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (TorqueException e) {
+			e.printStackTrace();
+		}    	
     }
 
     private void AISbuttonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -660,7 +674,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
             ));
         
         // SALES PER PATIENT
-        modelObject = ReportController.retrieveSalesPerPatient(); 
+        modelObject = ReportController.retrieveSalesPerPatient(this.selectedPatient); 
         SPTable.setModel(new javax.swing.table.DefaultTableModel(
         		modelObject,
                 new String [] {
@@ -679,7 +693,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
             ));
 
         // REGULATED DRUGS PER PATIENT
-        modelObject = ReportController.retrieveSales();  
+        modelObject = ReportController.retrieveSalesOfRegulatedDrugsPerPatient(selectedPatientRegulatedDrugs);  
         SRDPTable.setModel(new javax.swing.table.DefaultTableModel(
         		modelObject,
                 new String [] {
@@ -726,9 +740,9 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     private javax.swing.JTable DSTable;
     private javax.swing.JTable IRTable;
     private javax.swing.JTable SPTable;
-    private javax.swing.JButton SPbutton;
+    private javax.swing.JButton btnSalePerPatient;
     private javax.swing.JLabel SPpatient;
-    private javax.swing.JTextField SPtextfield;
+    private javax.swing.JTextField txtSalePerPatient;
     private javax.swing.JTable SRDDTable;
     private javax.swing.JButton SRDDbutton;
     private javax.swing.JLabel SRDDdoctor;
@@ -736,7 +750,7 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     private javax.swing.JTable SRDPTable;
     private javax.swing.JButton SRDPbutton;
     private javax.swing.JLabel SRDPpatient;
-    private javax.swing.JTextField SRDPtextfield;
+    private javax.swing.JTextField txtSalesOfRegulatedDrugsByPatient;
     private javax.swing.JTable STable;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -771,6 +785,5 @@ public class SummaryReportsPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton btnCancel;
-    // End of variables declaration//GEN-END:variables
 
 }
