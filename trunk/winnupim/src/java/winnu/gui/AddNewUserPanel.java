@@ -296,10 +296,7 @@ public class AddNewUserPanel extends javax.swing.JPanel {
         String usertype="";
         String password="";
 
-        if (!txtPassword.getText().equals(txtConfirmPassword.getText())){
-            txtPassword.setText("");
-            txtConfirmPassword.setText("");
-        }else if((txtUsername.getText().equals("")) || (txtFirstName.getText().equals("")) || (txtMiddleName.getText().equals("")) || (txtLastName.getText().equals("")) || (txtPosition.getText().equals(""))){
+        if((txtPassword.getText().equals("")) || (txtConfirmPassword.getText().equals("")) || (txtUsername.getText().equals("")) || (txtFirstName.getText().equals("")) || (txtMiddleName.getText().equals("")) || (txtLastName.getText().equals("")) || (txtPosition.getText().equals(""))){
         	
         	JOptionPane.showMessageDialog(null, "Fields with ** should not be empty!", "Add New User", JOptionPane.ERROR_MESSAGE);
         	
@@ -313,8 +310,15 @@ public class AddNewUserPanel extends javax.swing.JPanel {
             username = txtUsername.getText();
             usertype = cbxUserType.getSelectedItem().toString();
             contactnumber = txtContactNumber.getText();
-
-			 if(control.addAccountController.isExisting(txtUsername.getText())){
+            
+            if (!txtPassword.getText().equals(txtConfirmPassword.getText())){
+                
+            	JOptionPane.showMessageDialog(null, "Passwords do not match!", "Add New User", JOptionPane.ERROR_MESSAGE);
+            	txtPassword.setText("");
+                txtConfirmPassword.setText("");
+                
+                
+            }else if(control.addAccountController.isExisting(txtUsername.getText())){
             	control.addAccountController.addUser(lastname, middlename, firstname, address, position, username, usertype, contactnumber, password);
 	        	JOptionPane.showMessageDialog(null, txtUsername.getText() +  " has been successfully added.", "Add New User", 1);
             	
@@ -332,10 +336,9 @@ public class AddNewUserPanel extends javax.swing.JPanel {
 	        	mainform.reloadMainMenu();
             }else{
             	
-            	JOptionPane.showMessageDialog(null, "The username " + txtUsername.getText() +  " already exists.", "Add New User", 1);
+            	JOptionPane.showMessageDialog(null, "The username " + txtUsername.getText() +  " already exists.", "Add New User", JOptionPane.ERROR_MESSAGE);
             	txtUsername.setText("");
-            	
-            	
+            	            	
             }
 			
         }   

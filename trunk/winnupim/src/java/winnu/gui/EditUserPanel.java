@@ -193,21 +193,34 @@ public class EditUserPanel extends javax.swing.JPanel {
         	address = txtAddress.getText();
         	contactDetails = txtContacts.getText();
         
-        	control.editAccountController.editAccount(selectedUser.getUserId(), selectedUser.getUsername(), selectedUser.getPassword(), firstname, middlename, lastname, position, address, contactDetails, selectedUser.getType());
+        	if((txtFname.getText().equals("")) || (txtMname.getText().equals("")) || (txtLname.getText().equals("")) || (txtPosition.getText().equals(""))){
+            	JOptionPane.showMessageDialog(null, "Fields with ** should not be empty!", "Edit Own Account", JOptionPane.ERROR_MESSAGE);
+            }
         	
-        	 JOptionPane.showMessageDialog(null, selectedUser.getUsername() +  "'s information has been successfully updated.", "Edit Own Account", 1);
+        	else{
+        	
+	        	control.editAccountController.editAccount(selectedUser.getUserId(), selectedUser.getUsername(), selectedUser.getPassword(), firstname, middlename, lastname, position, address, contactDetails, selectedUser.getType());
+	        	
+	        	 JOptionPane.showMessageDialog(null, selectedUser.getUsername() +  "'s information has been successfully updated.", "Edit User Account", 1);
+	             
+	             mainform.reloadMainMenu();
+	             
+	             control.setCurrentSelectedUser(null);
+	             txtFname.setText("");
+	             txtMname.setText("");
+	             txtLname.setText("");
+	             txtPosition.setText("");
+	             txtAddress.setText("");
+	             txtContacts.setText("");
+	             lblUsername0.setText("<select a user>");
              
-             mainform.reloadMainMenu();
+        	}
              
-             control.setCurrentSelectedUser(null);
-             txtFname.setText("");
-             txtMname.setText("");
-             txtLname.setText("");
-             txtPosition.setText("");
-             txtAddress.setText("");
-             txtContacts.setText("");
-             lblUsername0.setText("<select a user>");
-             
+        }
+        
+        else{
+        	
+        	 JOptionPane.showMessageDialog(null, "No selected User!", "Edit User Account", JOptionPane.ERROR_MESSAGE);
         }
         
         
