@@ -198,35 +198,28 @@ public class EditOwnAccountPanel extends javax.swing.JPanel {
         String contactNumber = txtContactNumber.getText();
         User currentUser = control.getCurrentUser();
     
-        if((txtPassword.getText().equals("")) || (txtConfirmPassword.getText().equals("")) || (txtFname.getText().equals("")) || (txtMname.getText().equals("")) || (txtLname.getText().equals("")) || (txtPosition.getText().equals(""))){
-        	JOptionPane.showMessageDialog(null, "Fields with ** should not be empty!", "Edit Own Account", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        else{
-	        if(txtPassword.getText().equals(txtConfirmPassword.getText())) {
-	            control.editAccountController.editAccount(currentUser.getUserId(), 
-	            		currentUser.getUsername(), txtPassword.getText(), 
-	            		firstname, middlename, lastname, 
-	            		position, address, contactNumber, currentUser.getType());
-	            
-	            control.setCurrentUser(UserPeer.retrieveUser(currentUser.getUserId()));
-	            JOptionPane.showMessageDialog(null, currentUser.getUsername() +  "'s information has been successfully updated.", "Edit Own Account", 1);
-	            
-	            txtFname.setText("");
-	            txtMname.setText("");
-	            txtLname.setText("");
-	            txtPosition.setText("");
-	            txtAddress.setText("");
-	            txtContactNumber.setText("");
-	            txtPassword.setText("");
-	            txtConfirmPassword.setText("");
-	            
-	            mainform.reloadMainMenu();
-	            
-	        } else {
-	            System.out.println("Passwords do not match.");
-	            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Edit Own Account", JOptionPane.ERROR_MESSAGE);
-	        }
+        if(txtPassword.getText().equals(txtConfirmPassword.getText())) {
+            control.editAccountController.editAccount(currentUser.getUserId(), 
+            		currentUser.getUsername(), txtPassword.getText(), 
+            		lastname, middlename, firstname, 
+            		position, address, contactNumber, currentUser.getType());
+            
+            control.setCurrentUser(UserPeer.retrieveUser(currentUser.getUserId()));
+            JOptionPane.showMessageDialog(null, currentUser.getUsername() +  "'s information has been successfully updated.", "Edit Own Account", 1);
+            
+            txtFname.setText("");
+            txtMname.setText("");
+            txtLname.setText("");
+            txtPosition.setText("");
+            txtAddress.setText("");
+            txtContactNumber.setText("");
+            txtPassword.setText("");
+            txtConfirmPassword.setText("");
+            
+            mainform.reloadMainMenu();
+            
+        } else {
+            System.out.println("Passwords do not match.");
         }
 
     }//GEN-LAST:event_btnAcceptActionPerformed

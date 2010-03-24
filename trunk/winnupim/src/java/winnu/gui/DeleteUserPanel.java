@@ -131,18 +131,16 @@ public class DeleteUserPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 	private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-    	if(control.getCurrentSelectedUser() == null) {
+    	if(control.getCurrentSelectedUser() != null) {
 			control.setCurrentSelectedUser(usersInList.get(lstUsers.getSelectedIndex()));
 			control.deleteAccountController.deleteAccount(control.getCurrentSelectedUser().getUsername());
 			
 			preloadList();
-			System.out.println( control.getCurrentSelectedUser().getUsername());
 			
 			JOptionPane.showMessageDialog(null, "SUCCESS: " + control.getCurrentSelectedUser().getUsername() +  " has been deleted.", "Delete User", JOptionPane.INFORMATION_MESSAGE);
     	}
     	else {
-    		
-    		JOptionPane.showMessageDialog(null, "ERROR: Select a User first.", "Delete User", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERROR: Select a User first.", "Delete User", JOptionPane.ERROR_MESSAGE);
     	}
 	}
 	
