@@ -203,8 +203,8 @@ public class ReportController {
         return modelObject;        
 	}
 	
-	public static Object[][] retrieveSalesPerPatient(){
-		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveSoldItems();
+	public static Object[][] retrieveSalesPerPatient(String patientName){
+		List<WithdrawnItem> list = WithdrawnItemPeer.retrieveSoldItemsPerPatient(patientName);
         WithdrawnItem item;
         ItemBatch itemBatch;
         Item itemName;
@@ -396,6 +396,32 @@ public class ReportController {
         }                   
         return modelObject;  
 	}
+
+	public static Object[][] retrieveSalesOfRegulatedDrugsPerPatient(String patientName){
+		WithdrawnItem withdrawnItem;
+        ItemBatch itemBatch;
+        Item item;
+        List<WithdrawnItem> list = new ArrayList();
+        
+        list = WithdrawnItemPeer.retrieveAllRegulatedDrugWithPatientName(patientName);
+		
+        Object[][] modelObject = new Object[list.size()][];         
+        
+        for(int i=0; i< list.size(); i++){
+        	withdrawnItem = list.get(i);
+        	itemBatch = ItemBatchPeer.retrieveItemBatch(withdrawnItem.getItemBatchId());
+        	item = ItemPeer.retrieveItem(itemBatch.getItemId());
+        	
+        	Object[] model = null;
+			try {
+				model = new Object[]{withdrawnItem.getDateWithdrawn(),withdrawnItem.getSaleId(), itemBatch.getItemId(), item.getBrandName() , item.getGenericName(), itemBatch.getSupplier().getSupplierName(), withdrawnItem.getSale().getCustomerName(), withdrawnItem.getQuantity(), "pcs", itemBatch.getAcquisitionCost(), withdrawnItem.getSellingPrice(), withdrawnItem.getReason()};
+			} catch (TorqueException e) {
+				e.printStackTrace();
+			}
+			modelObject[i]= model;
+        }                   
+        return modelObject;  
+    }
 	
 
 }
