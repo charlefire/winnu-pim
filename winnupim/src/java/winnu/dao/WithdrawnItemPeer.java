@@ -16,7 +16,7 @@ import org.apache.torque.util.Criteria;
  *  application requirements.  This class will only be generated as
  *  long as it does not already exist in the output directory.
  */
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 	
 	public static boolean addWithdrawnItem(float sellingPrice, java.util.Date dateWithdrawn, String reason, int doctorId, int saleId, int itemBatchId, int userId, int quantity){
@@ -183,6 +183,7 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public static List<WithdrawnItem> retrieveAllByItemBrandName(String brandName){
 		List<WithdrawnItem> results = new ArrayList<WithdrawnItem>();
 		List<WithdrawnItem> resultList = new ArrayList<WithdrawnItem>();
@@ -250,6 +251,7 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 		}		
 	}
 
+	@SuppressWarnings("unchecked")
 	public static List<WithdrawnItem> retrieveUsingSaleId(int itemBatchId, int saleId){
 		Criteria criteria = new Criteria();
 		criteria.add(WithdrawnItemPeer.ITEMBATCHID, itemBatchId);
@@ -263,6 +265,7 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public static List<WithdrawnItem> retrieveSoldItems(){
 		Criteria criteria = new Criteria();
 		criteria.add(WithdrawnItemPeer.REASON, "Sale");
@@ -275,6 +278,7 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public static List<WithdrawnItem> retrieveAllRegulatedDrugWithPatientName(String patientName) {
 //		List<WithdrawnItem> withdrawnItem = new ArrayList<WithdrawnItem>();
 //		List<WithdrawnItem> filteredWithdrawnItem = new ArrayList<WithdrawnItem>(); 
@@ -317,6 +321,7 @@ public class WithdrawnItemPeer extends winnu.dao.BaseWithdrawnItemPeer {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public static List<WithdrawnItem> retrieveSoldItemsPerPatient(String patientName) {
 		Criteria criteria = new Criteria();
 		criteria.add(WithdrawnItemPeer.REASON, "Sale");
