@@ -8,6 +8,7 @@ import winnu.dao.Item;
 
 import javax.swing.JOptionPane;
 
+@SuppressWarnings({ "unused", "serial" })
 public class SpecialWithdrawalPanel extends javax.swing.JPanel {
 	private WinnuControl control;
 	private MainForm mainform;

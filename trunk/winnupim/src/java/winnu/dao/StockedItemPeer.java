@@ -23,6 +23,7 @@ public class StockedItemPeer extends winnu.dao.BaseStockedItemPeer {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<StockedItem> retrieveAll(){
 		Criteria criteria = new Criteria();
 		try{
@@ -85,6 +86,7 @@ public class StockedItemPeer extends winnu.dao.BaseStockedItemPeer {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<StockedItem> retrieveAllItemBatchId(String itemId){
 		Criteria criteria = new Criteria();
 		criteria.add(StockedItemPeer.STOCKEDITEMID, itemId);
@@ -133,6 +135,7 @@ public class StockedItemPeer extends winnu.dao.BaseStockedItemPeer {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<StockedItem> retrieveUsingBatchId(int batchId){
 		Criteria criteria = new Criteria();
 		criteria.add(StockedItemPeer.ITEMBATCHID, batchId);

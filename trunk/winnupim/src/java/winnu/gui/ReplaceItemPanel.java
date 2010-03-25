@@ -3,6 +3,7 @@ import winnu.control.WinnuControl;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class ReplaceItemPanel extends javax.swing.JPanel {
 	private WinnuControl control;
 	private MainForm mainform;

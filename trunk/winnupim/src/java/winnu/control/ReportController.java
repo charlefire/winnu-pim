@@ -278,6 +278,7 @@ public class ReportController {
         return modelObject;        
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static Object[][] retrieveDrugsExpiring(){
 		List<StockedItem> list = StockedItemPeer.retrieveAll();
 		List<StockedItem> filteredList = new ArrayList();
@@ -368,6 +369,7 @@ public class ReportController {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	public static Object[][] retrieveSalesOfRegulatedDrugsPerDoctor(String doctorName) {
 		WithdrawnItem withdrawnItem;
         ItemBatch itemBatch;
@@ -397,6 +399,7 @@ public class ReportController {
         return modelObject;  
 	}
 
+	@SuppressWarnings("unchecked")
 	public static Object[][] retrieveSalesOfRegulatedDrugsPerPatient(String patientName){
 		WithdrawnItem withdrawnItem;
         ItemBatch itemBatch;

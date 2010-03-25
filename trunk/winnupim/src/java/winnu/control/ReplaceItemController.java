@@ -13,6 +13,7 @@ import winnu.dao.WithdrawnItem;
 import winnu.dao.WithdrawnItemPeer;
 
 
+@SuppressWarnings("unused")
 public class ReplaceItemController {
 	private List<WithdrawnItem> items;
 	private WinnuControl control;
